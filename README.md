@@ -16,4 +16,4 @@
 - Dealer wins if their hand is equal to 21 or greater closest to 21.  
 
 ## UML 
-![image](IMG/Screen Shot 2022-11-07 at 4.35.36 PM.png)
+![image](IMG/blackjackuml.png)
