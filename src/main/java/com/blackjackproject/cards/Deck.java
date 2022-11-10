@@ -1,10 +1,16 @@
-package cards;
+package com.blackjackproject.cards;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
 
-    private List<Card> cards;
+    private List<Card> cards = new ArrayList<>();
+
+
+    public Deck() {
+        createDeck();
+    }
 
     private void createDeck(){
         for (Suit suits : Suit.values()) {
@@ -16,6 +22,13 @@ public class Deck {
 
     public int checkDeckSize(){
         return cards.size();
+    }
+
+    public Card deal(){
+
+        Card cardTodeal = this.cards.remove(0);
+
+        return cardTodeal;
     }
 
 }

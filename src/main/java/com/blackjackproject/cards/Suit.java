@@ -1,4 +1,4 @@
-package cards;
+package com.blackjackproject.cards;
 
 public enum Suit {
     Diamond("Diamond"),
