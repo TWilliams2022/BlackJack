@@ -11,21 +11,20 @@ public class DeckTest extends TestCase {
     public void setUp() throws Exception {
         deck = new Deck();
 
-
     }
+
+
+
     @Test
     public void testCheckDeckSize() {
 
        int fullDeck =  deck.checkDeckSize();
-
        assertEquals(52, fullDeck);
-
 
     }
 
     @Test
     public void testDeckNotNull(){
-
         assertNotNull(deck);
     }
 
@@ -35,4 +34,7 @@ public class DeckTest extends TestCase {
 
         assertEquals(51,deck.checkDeckSize());
     }
+
+
+
 }

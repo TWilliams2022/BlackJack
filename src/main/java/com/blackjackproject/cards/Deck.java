@@ -13,10 +13,14 @@ public class Deck {
 
     private void createDeck(){
 
-        for (Suit suits : Suit.values()) {
-            for (Rank ranks : Rank.values()) {
-                cards.add(new Card(ranks, suits));
+        try {
+            for (Suit suits : Suit.values()) {
+                for (Rank ranks : Rank.values()) {
+                    cards.add(new Card(ranks, suits));
+                }
             }
+        } catch (NullPointerException e) {
+            throw new NullPointerException("A deck was not created: " + e);
         }
 
     }
