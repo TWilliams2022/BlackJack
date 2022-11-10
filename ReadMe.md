@@ -20,3 +20,5 @@ Simple game of Black Jack!
 ## UML
 
 ![image](IMG/blackjackuml.png)
+
+
