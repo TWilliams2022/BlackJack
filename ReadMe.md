@@ -17,4 +17,6 @@ Simple game of Black Jack!
 3. Dealer must continue to drop cards if total is 16 or less
 4. Closest hand to 21 wins! 
 
+## UML
 
+![image](IMG/blackjackuml.png)
