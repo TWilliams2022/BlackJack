@@ -2,13 +2,20 @@ package com.blackjackproject.cards;
 
 public class BlackJackHand extends Hand {
 
+    public final int MAX_HAND_VALUE = 21;
+
     public BlackJackHand() {
     }
 
+    @Override
     public int findHandValue() {
-    int value = cards.stream()
+        handValue = cards.stream()
             .mapToInt(x -> x.getValue())
             .sum();
-    return value;
-}
+        return handValue;
+    }
+
+
+
+
 }

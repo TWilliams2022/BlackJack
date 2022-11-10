@@ -8,10 +8,11 @@ public abstract class Hand {
     protected List<Card> cards;
     protected int handValue;
 
+
     // Constructor
+
     public Hand() {
         cards = new ArrayList<>();
-
     }
 
     // Buisness Methods
