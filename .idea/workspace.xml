@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="09d7d1f9-746e-4dd5-bd3b-3329cb5415cb" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/players/DealerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/players/DealerTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectViewState">
+    <option name="flattenPackages" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blackjackproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BlackJackApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

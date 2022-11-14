@@ -12,8 +12,8 @@ public class GUI extends JFrame {
     public GUI(){
         this.setSize(aW,aH); /// width and height of border
         this.setTitle("Team 6 blackjack Game"); // game title
-        this.setVisible(true); // set border visable to true
-        this.setResizable(true); // allow border to be visable
+        this.setVisible(true); // set border visible to true
+        this.setResizable(true); // allow border to be visible
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes application
 
     }
