@@ -1,20 +1,19 @@
 package com.blackjackproject;
 
 
+public class BlackJackApplication implements Runnable {
+     GUI gui = new GUI();
 
-public class BlackJackApplication {
+
     public static void main(String[] args) {
 
-        BlackJackGame blackJackGame = new BlackJackGame();
+        new Thread( new BlackJackApplication()).start();
 
 
-        blackJackGame.playGame();
+    }
 
-
-
-
-
-
+    @Override
+    public void run() {
 
     }
 }

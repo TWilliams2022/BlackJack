@@ -17,7 +17,7 @@ public class BlackJackGame {
 
 
     public void playGame() {
-        // Shuffle deck and deal initial cards
+        // Suffle deck and deal initial cards
         dealer.shuffle();
         Card player1 = dealer.dealACard();
         Card dealer1 = dealer.dealACard();
@@ -38,6 +38,7 @@ public class BlackJackGame {
                 System.out.println("the dealer deals you a new card");
                 Card newCard = dealer.dealACard();
                 player.receiveCard(newCard);
+                System.out.println(newCard);
             }
             else {
                 System.out.println("you decide to stay");
@@ -45,6 +46,8 @@ public class BlackJackGame {
             }
 
         }
+
+
         if (player.getHandValue() > 21) {
             System.out.println("your hand is bust, sorry you lose");
         }
@@ -75,8 +78,6 @@ public class BlackJackGame {
             }
         }
     }
-
-
 
     public boolean isHit() {
         return hit;

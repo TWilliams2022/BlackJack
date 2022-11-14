@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic" />
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/DeckTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,14 +24,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="fgr8kn5i" />
@@ -54,6 +49,16 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+      <recent name="junit.framework.TestCase" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.blackjackproject.players" />
+      <recent name="com.blackjackproject.cards" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.BlackJackApplication">
     <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
@@ -68,15 +73,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackGame" />
+    <configuration name="DealerTest.DealerCardReceived" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlackJack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.blackjackproject.*" />
+          <option name="PATTERN" value="com.blackjackproject.players.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
+      <option name="METHOD_NAME" value="DealerCardReceived" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -132,7 +140,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BlackJackApplication" />
-        <item itemvalue="Application.BlackJackGame" />
+        <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
         <item itemvalue="JUnit.DealerTest.clearDealerCard" />
         <item itemvalue="JUnit.DealerTest.checkDealerCard" />
         <item itemvalue="JUnit.DealerTest.checkDealerHand" />
@@ -162,21 +170,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668447034648</updated>
     </task>
-    <task id="LOCAL-00003" summary="Added game logic">
-      <created>1668463318734</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1668463318734</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Made changes to the game logic">
-      <created>1668465046331</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1668465046331</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -194,8 +188,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="commit player Test" />
-    <MESSAGE value="Added game logic" />
-    <MESSAGE value="Made changes to the game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made changes to the game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit player Test" />
   </component>
 </project>
