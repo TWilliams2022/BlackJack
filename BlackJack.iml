@@ -12,5 +12,11 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:20-ea+7" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-swing:win:20-ea+7" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:20-ea+7" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-graphics:win:20-ea+7" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:20-ea+7" level="project" />
+    <orderEntry type="library" name="Maven: org.openjfx:javafx-base:win:20-ea+7" level="project" />
   </component>
 </module>

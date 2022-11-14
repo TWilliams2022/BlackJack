@@ -4,23 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_11_04_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_11_04_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_1_25_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_1_25_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_1_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_1_32_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_1_34_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_10_2022_1_34_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_17_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_17_AM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_29_AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_29_AM__Changes_.xml" afterDir="false" />
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Added game logic">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_20_ea_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_20_ea_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_20_ea_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_20_ea_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_20_ea_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_win_20_ea_7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/DeckTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/DeckTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/players/DealerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/players/DealerTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BlackJack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackJack.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +79,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackGame" />
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blackjackproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DealerTest.checkDealerCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlackJack" />
       <extension name="coverage">
@@ -133,29 +140,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HandTest.test_add_card" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.HandTest" />
-      <option name="METHOD_NAME" value="test_find_hand_value" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.BlackJackApplication" />
+        <item itemvalue="Application.BlackJackGame" />
         <item itemvalue="JUnit.DealerTest.clearDealerCard" />
         <item itemvalue="JUnit.DealerTest.checkDealerCard" />
         <item itemvalue="JUnit.DealerTest.checkDealerHand" />
-        <item itemvalue="JUnit.HandTest.test_add_card" />
       </list>
     </recent_temporary>
   </component>
@@ -182,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668447034648</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added game logic">
+      <created>1668463318734</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668463318734</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,6 +198,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
     <MESSAGE value="commit player Test" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit player Test" />
+    <MESSAGE value="Added game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added game logic" />
   </component>
 </project>
