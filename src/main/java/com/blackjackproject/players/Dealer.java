@@ -6,8 +6,8 @@ import com.blackjackproject.cards.Deck;
 
 public class Dealer {
 
-    BlackJackHand dealerHand;
-    Deck cards;
+    private BlackJackHand dealerHand;
+    private Deck cards;
 
 
     public Dealer() {

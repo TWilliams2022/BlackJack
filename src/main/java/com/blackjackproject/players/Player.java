@@ -5,7 +5,7 @@ import com.blackjackproject.cards.Card;
 
 public class Player {
 
-    BlackJackHand playerHand;
+    private BlackJackHand playerHand;
 
     public Player() {
         playerHand = new BlackJackHand();
