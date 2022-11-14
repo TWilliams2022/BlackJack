@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/players/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" afterDir="false" />
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,7 +157,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668443384290</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit player Test">
+      <created>1668447034648</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1668447034648</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,6 +181,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="commit player Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit player Test" />
   </component>
 </project>
