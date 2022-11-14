@@ -21,7 +21,9 @@ public abstract class Hand {
         setHandValue(findHandValue());
     }
 
-    public void clear(){}
+    public void clear(){
+        cards = new ArrayList<>();
+    }
 
     abstract int findHandValue();
 
