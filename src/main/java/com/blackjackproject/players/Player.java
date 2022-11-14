@@ -7,6 +7,12 @@ public class Player {
 
     private BlackJackHand playerHand;
 
+
+    public BlackJackHand getPlayerHand() {
+        return playerHand;
+    }
+
+
     public Player() {
         playerHand = new BlackJackHand();
     }

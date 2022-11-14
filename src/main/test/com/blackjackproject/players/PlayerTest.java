@@ -26,14 +26,14 @@ public class PlayerTest {
     public void receiveCard() {
         testPlayer.receiveCard(sevenDiamonds);
         assertEquals(1,
-                testPlayer.playerHand.getCards().size());
+                testPlayer.getPlayerHand().getCards().size());
     }
 
     @Test
     public void getHandValue() {
         testPlayer.receiveCard(sevenDiamonds);
         testPlayer.receiveCard(eightDiamonds);
-        assertEquals(15, testPlayer.playerHand.findHandValue());
+        assertEquals(15, testPlayer.getPlayerHand().findHandValue());
     }
 
     @Test
@@ -41,6 +41,6 @@ public class PlayerTest {
         testPlayer.receiveCard(sevenDiamonds);
         testPlayer.receiveCard(eightDiamonds);
         testPlayer.clearPlayerHand();
-        assertEquals(0,testPlayer.playerHand.findHandValue());
+        assertEquals(0,testPlayer.getPlayerHand().findHandValue());
     }
 }
