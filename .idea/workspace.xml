@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="">
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit">
+      <change afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/players/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +20,7 @@
       <list>
         <option value="JUnit3 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -32,8 +36,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit3" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3" value="junit.framework.TestCase" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -41,44 +46,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
       <recent name="junit.framework.TestCase" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.blackjackproject.players" />
       <recent name="com.blackjackproject.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.HandTest">
-    <configuration name="DeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.DeckTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DeckTest.testDeckNullPointerException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.DeckTest" />
-      <option name="METHOD_NAME" value="testDeckNullPointerException" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.PlayerTest.clearPlayerHand">
     <configuration name="HandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlackJack" />
       <extension name="coverage">
@@ -90,22 +66,6 @@
       <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.HandTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="HandTest.test_add_card" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.cards.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.HandTest" />
-      <option name="METHOD_NAME" value="test_add_card" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -126,13 +86,61 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PlayerTest.clearPlayerHand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blackjackproject.players.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
+      <option name="METHOD_NAME" value="clearPlayerHand" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.getHandValue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blackjackproject.players.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
+      <option name="METHOD_NAME" value="getHandValue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.receiveCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blackjackproject.players.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
+      <option name="METHOD_NAME" value="receiveCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HandTest" />
+        <item itemvalue="JUnit.PlayerTest.clearPlayerHand" />
+        <item itemvalue="JUnit.PlayerTest.getHandValue" />
+        <item itemvalue="JUnit.PlayerTest.receiveCard" />
         <item itemvalue="JUnit.HandTest.test_find_hand_value" />
-        <item itemvalue="JUnit.HandTest.test_add_card" />
-        <item itemvalue="JUnit.DeckTest.testDeckNullPointerException" />
-        <item itemvalue="JUnit.DeckTest" />
+        <item itemvalue="JUnit.HandTest" />
       </list>
     </recent_temporary>
   </component>
@@ -145,6 +153,14 @@
       <option name="presentableId" value="Default" />
       <updated>1667962595374</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <created>1668443384290</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668443384290</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,5 +174,9 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
 </project>

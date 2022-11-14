@@ -8,10 +8,12 @@ import static org.junit.Assert.*;
 public class HandTest {
     private Card sixHearts;
     private BlackJackHand hand;
+    private Card sevenDiamonds;
 
     @Before
     public void setUp() throws Exception {
         sixHearts = new Card(Rank.SIX, Suit.Hearts);
+        sevenDiamonds = new Card(Rank.SEVEN,Suit.Diamond);
         hand = new BlackJackHand();
     }
 
@@ -25,7 +27,8 @@ public class HandTest {
     @Test
     public void test_find_hand_value() {
         hand.addCard(sixHearts);
-        assertEquals(6, hand.findHandValue());
+        hand.addCard(sevenDiamonds);
+        assertEquals(13, hand.findHandValue());
 
     }
 }
