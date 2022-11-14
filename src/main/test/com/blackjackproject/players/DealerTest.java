@@ -37,5 +37,13 @@ private Card eightHearts;
         assertEquals(8, dealerHand.showHandValue());
     }
 
+    @Test
+    public void DealerCardReceived(){
+        //52 cards in a deck
+        dealerHand.dealACard();
+        dealerHand.dealACard();
+        dealerHand.dealACard();
+        assertEquals(49, dealerHand.remainingCards());
+    }
 
 }
