@@ -15,7 +15,7 @@ public abstract class Hand {
         cards = new ArrayList<>();
     }
 
-    // Buisness Methods
+    // Business Methods
     public void addCard(Card card){
         cards.add(card);
         setHandValue(findHandValue());
