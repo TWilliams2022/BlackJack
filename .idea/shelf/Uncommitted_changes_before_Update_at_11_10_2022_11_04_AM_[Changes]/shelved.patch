@@ -1,0 +1,114 @@
+Index: .idea/codeStyles/Project.xml
+===================================================================
+diff --git a/.idea/codeStyles/Project.xml b/.idea/codeStyles/Project.xml
+deleted file mode 100644
+--- a/.idea/codeStyles/Project.xml	(revision 7745c579731ed85671543e7274d699595299085d)
++++ /dev/null	(revision 7745c579731ed85671543e7274d699595299085d)
+@@ -1,7 +0,0 @@
+-<component name="ProjectCodeStyleConfiguration">
+-  <code_scheme name="Project" version="173">
+-    <ScalaCodeStyleSettings>
+-      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+-    </ScalaCodeStyleSettings>
+-  </code_scheme>
+-</component>
+\ No newline at end of file
+Index: .idea/codeStyles/codeStyleConfig.xml
+===================================================================
+diff --git a/.idea/codeStyles/codeStyleConfig.xml b/.idea/codeStyles/codeStyleConfig.xml
+deleted file mode 100644
+--- a/.idea/codeStyles/codeStyleConfig.xml	(revision 7745c579731ed85671543e7274d699595299085d)
++++ /dev/null	(revision 7745c579731ed85671543e7274d699595299085d)
+@@ -1,5 +0,0 @@
+-<component name="ProjectCodeStyleConfiguration">
+-  <state>
+-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+-  </state>
+-</component>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 7745c579731ed85671543e7274d699595299085d)
++++ /dev/null	(revision 7745c579731ed85671543e7274d699595299085d)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: .idea/aws.xml
+===================================================================
+diff --git a/.idea/aws.xml b/.idea/aws.xml
+deleted file mode 100644
+--- a/.idea/aws.xml	(revision 7745c579731ed85671543e7274d699595299085d)
++++ /dev/null	(revision 7745c579731ed85671543e7274d699595299085d)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="accountSettings">
+-    <option name="activeRegion" value="us-east-1" />
+-    <option name="recentlyUsedRegions">
+-      <list>
+-        <option value="us-east-1" />
+-      </list>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/BlackJack.iml
+===================================================================
+diff --git a/.idea/BlackJack.iml b/.idea/BlackJack.iml
+deleted file mode 100644
+--- a/.idea/BlackJack.iml	(revision 7745c579731ed85671543e7274d699595299085d)
++++ /dev/null	(revision 7745c579731ed85671543e7274d699595299085d)
+@@ -1,9 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" inherit-compiler-output="true">
+-    <exclude-output />
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="inheritedJdk" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: BlackJack.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BlackJack.iml b/BlackJack.iml
+new file mode 100644
+--- /dev/null	(date 1667948563661)
++++ b/BlackJack.iml	(date 1667948563661)
+@@ -0,0 +1,9 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module type="WEB_MODULE" version="4">
++  <component name="NewModuleRootManager" inherit-compiler-output="true">
++    <exclude-output />
++    <content url="file://$MODULE_DIR$" />
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/BlackJack.iml\" filepath=\"$PROJECT_DIR$/.idea/BlackJack.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision 7745c579731ed85671543e7274d699595299085d)
++++ b/.idea/modules.xml	(date 1667948563668)
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/BlackJack.iml" filepath="$PROJECT_DIR$/.idea/BlackJack.iml" />
++      <module fileurl="file://$PROJECT_DIR$/BlackJack.iml" filepath="$PROJECT_DIR$/BlackJack.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file

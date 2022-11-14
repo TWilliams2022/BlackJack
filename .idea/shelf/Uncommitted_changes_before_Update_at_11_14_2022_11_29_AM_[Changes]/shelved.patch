@@ -1,0 +1,150 @@
+Index: src/main/test/com/blackjackproject/cards/HandTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.blackjackproject.cards;\r\n\r\nimport org.junit.Test;\r\n\r\nimport static org.junit.Assert.*;\r\n\r\npublic class HandTest {\r\n    Card sixHearts = new Card(Rank.SIX, Suit.Hearts);\r\n    Hand hand;\r\n\r\n    @Test\r\n    public void test_add_card() {\r\n        hand.addCard(sixHearts);\r\n        System.out.println(hand);\r\n    }\r\n\r\n    @Test\r\n    public void test_find_hand_value() {\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/test/com/blackjackproject/cards/HandTest.java b/src/main/test/com/blackjackproject/cards/HandTest.java
+--- a/src/main/test/com/blackjackproject/cards/HandTest.java	(revision c0ec06a7f49751cfaf0721b9990bf274d8010793)
++++ b/src/main/test/com/blackjackproject/cards/HandTest.java	(date 1668443346194)
+@@ -1,17 +1,24 @@
+ package com.blackjackproject.cards;
+ 
++import org.junit.Before;
+ import org.junit.Test;
+ 
+ import static org.junit.Assert.*;
+ 
+ public class HandTest {
+-    Card sixHearts = new Card(Rank.SIX, Suit.Hearts);
+-    Hand hand;
++    private Card sixHearts;
++    private BlackJackHand hand;
++
++    @Before
++    public void setUp() throws Exception {
++        sixHearts = new Card(Rank.SIX, Suit.Hearts);
++        hand = new BlackJackHand();
++    }
+ 
+     @Test
+     public void test_add_card() {
+         hand.addCard(sixHearts);
+-        System.out.println(hand);
++        assertEquals(1, hand.getCards().size());
+     }
+ 
+     @Test
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit3 Test Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HIBCwIiGU6vTHYvH71IgmyFPgq\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenPackages\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit3\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3\" value=\"junit.framework.TestCase\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"junit.framework.TestCase\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"com.blackjackproject.cards\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.DeckTest.testDeckNullPointerException\">\r\n    <configuration name=\"DeckTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.cards.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.cards\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.cards.DeckTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DeckTest.testCheckDeckSize\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.cards.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.cards\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.cards.DeckTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testCheckDeckSize\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DeckTest.testDeal\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.cards.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.cards\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.cards.DeckTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testDeal\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DeckTest.testDeckNotNull\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.cards.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.cards\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.cards.DeckTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testDeckNotNull\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DeckTest.testDeckNullPointerException\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.cards.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.cards\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.cards.DeckTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"testDeckNullPointerException\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.DeckTest.testDeckNullPointerException\" />\r\n        <item itemvalue=\"JUnit.DeckTest\" />\r\n        <item itemvalue=\"JUnit.DeckTest.testDeal\" />\r\n        <item itemvalue=\"JUnit.DeckTest.testDeckNotNull\" />\r\n        <item itemvalue=\"JUnit.DeckTest.testCheckDeckSize\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\" />\r\n      <created>1667962595374</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667962595374</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision c0ec06a7f49751cfaf0721b9990bf274d8010793)
++++ b/.idea/workspace.xml	(date 1668443346096)
+@@ -4,8 +4,10 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="">
++    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -46,7 +48,7 @@
+       <recent name="com.blackjackproject.cards" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.DeckTest.testDeckNullPointerException">
++  <component name="RunManager" selected="JUnit.HandTest.test_add_card">
+     <configuration name="DeckTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+@@ -62,7 +64,7 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DeckTest.testCheckDeckSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="DeckTest.testDeal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -72,13 +74,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
+       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.DeckTest" />
+-      <option name="METHOD_NAME" value="testCheckDeckSize" />
++      <option name="METHOD_NAME" value="testDeal" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DeckTest.testDeal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="DeckTest.testDeckNotNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -88,13 +90,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
+       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.DeckTest" />
+-      <option name="METHOD_NAME" value="testDeal" />
++      <option name="METHOD_NAME" value="testDeckNotNull" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DeckTest.testDeckNotNull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="DeckTest.testDeckNullPointerException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -104,13 +106,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
+       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.DeckTest" />
+-      <option name="METHOD_NAME" value="testDeckNotNull" />
++      <option name="METHOD_NAME" value="testDeckNullPointerException" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DeckTest.testDeckNullPointerException" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="HandTest.test_add_card" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -119,8 +121,8 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
+-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.DeckTest" />
+-      <option name="METHOD_NAME" value="testDeckNullPointerException" />
++      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.HandTest" />
++      <option name="METHOD_NAME" value="test_add_card" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -128,11 +130,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.HandTest.test_add_card" />
+         <item itemvalue="JUnit.DeckTest.testDeckNullPointerException" />
+         <item itemvalue="JUnit.DeckTest" />
+         <item itemvalue="JUnit.DeckTest.testDeal" />
+         <item itemvalue="JUnit.DeckTest.testDeckNotNull" />
+-        <item itemvalue="JUnit.DeckTest.testCheckDeckSize" />
+       </list>
+     </recent_temporary>
+   </component>
