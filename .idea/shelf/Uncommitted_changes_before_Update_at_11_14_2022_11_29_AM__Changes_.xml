@@ -1,0 +1,14 @@
+<changelist name="Uncommitted_changes_before_Update_at_11_14_2022_11_29_AM_[Changes]" date="1668443358568" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_29_AM_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/14/2022 11:29 AM [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/test-classes/com/blackjackproject/cards/HandTest.class" />
+    <option name="AFTER_PATH" value="target/test-classes/com/blackjackproject/cards/HandTest.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_29_AM_[Changes]/HandTest.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
+    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_11_29_AM_[Changes]/Hand.class" />
+  </binary>
+</changelist>
