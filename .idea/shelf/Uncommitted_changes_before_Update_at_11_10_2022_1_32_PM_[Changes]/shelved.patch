@@ -1,0 +1,148 @@
+Index: .idea/codeStyles/Project.xml
+===================================================================
+diff --git a/.idea/codeStyles/Project.xml b/.idea/codeStyles/Project.xml
+deleted file mode 100644
+--- a/.idea/codeStyles/Project.xml	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
++++ /dev/null	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
+@@ -1,7 +0,0 @@
+-<component name="ProjectCodeStyleConfiguration">
+-  <code_scheme name="Project" version="173">
+-    <ScalaCodeStyleSettings>
+-      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+-    </ScalaCodeStyleSettings>
+-  </code_scheme>
+-</component>
+\ No newline at end of file
+Index: .idea/codeStyles/codeStyleConfig.xml
+===================================================================
+diff --git a/.idea/codeStyles/codeStyleConfig.xml b/.idea/codeStyles/codeStyleConfig.xml
+deleted file mode 100644
+--- a/.idea/codeStyles/codeStyleConfig.xml	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
++++ /dev/null	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
+@@ -1,5 +0,0 @@
+-<component name="ProjectCodeStyleConfiguration">
+-  <state>
+-    <option name="PREFERRED_PROJECT_CODE_STYLE" value="Default" />
+-  </state>
+-</component>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
++++ /dev/null	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
+@@ -1,3 +0,0 @@
+-# Default ignored files
+-/shelf/
+-/workspace.xml
+Index: .idea/aws.xml
+===================================================================
+diff --git a/.idea/aws.xml b/.idea/aws.xml
+deleted file mode 100644
+--- a/.idea/aws.xml	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
++++ /dev/null	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="accountSettings">
+-    <option name="activeRegion" value="us-east-1" />
+-    <option name="recentlyUsedRegions">
+-      <list>
+-        <option value="us-east-1" />
+-      </list>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/BlackJack.iml
+===================================================================
+diff --git a/.idea/BlackJack.iml b/.idea/BlackJack.iml
+deleted file mode 100644
+--- a/.idea/BlackJack.iml	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
++++ /dev/null	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
+@@ -1,18 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
+-    <output url="file://$MODULE_DIR$/target/classes" />
+-    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+-    <content url="file://$MODULE_DIR$">
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+-      <sourceFolder url="file://$MODULE_DIR$/src/main/test" isTestSource="true" />
+-      <excludeFolder url="file://$MODULE_DIR$/target" />
+-    </content>
+-    <orderEntry type="jdk" jdkName="11" jdkType="JavaSDK" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
+-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: BlackJack.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/BlackJack.iml b/BlackJack.iml
+new file mode 100644
+--- /dev/null	(date 1668104866585)
++++ b/BlackJack.iml	(date 1668104866585)
+@@ -0,0 +1,34 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
++  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_11">
++    <output url="file://$MODULE_DIR$/target/classes" />
++    <output-test url="file://$MODULE_DIR$/target/test-classes" />
++    <content url="file://$MODULE_DIR$">
++      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
++      <sourceFolder url="file://$MODULE_DIR$/src/main/test" isTestSource="true" />
++      <excludeFolder url="file://$MODULE_DIR$/target" />
++    </content>
++    <orderEntry type="inheritedJdk" />
++    <orderEntry type="sourceFolder" forTests="false" />
++    <orderEntry type="module-library">
++      <library>
++        <CLASSES>
++          <root url="jar://$USER_HOME$/Documents/OneDrive_2022-10-11/Course Materials/Java-Part2/LabSetup_Java-Part2/StudentWork/IntmJ/Software/junit-4.13/lib/hamcrest-core-1.3.jar!/" />
++        </CLASSES>
++        <JAVADOC />
++        <SOURCES />
++      </library>
++    </orderEntry>
++    <orderEntry type="module-library">
++      <library>
++        <CLASSES>
++          <root url="jar://$USER_HOME$/Documents/OneDrive_2022-10-11/Course Materials/Java-Part2/LabSetup_Java-Part2/StudentWork/IntmJ/Software/junit-4.13/lib/junit-4.13.jar!/" />
++        </CLASSES>
++        <JAVADOC />
++        <SOURCES />
++      </library>
++    </orderEntry>
++    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.13.2" level="project" />
++    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
++  </component>
++</module>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectModuleManager\">\r\n    <modules>\r\n      <module fileurl=\"file://$PROJECT_DIR$/.idea/BlackJack.iml\" filepath=\"$PROJECT_DIR$/.idea/BlackJack.iml\" />\r\n    </modules>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+--- a/.idea/modules.xml	(revision 2764d482f043da2d520c4ccd6b7451e3ddcd680a)
++++ b/.idea/modules.xml	(date 1668104866601)
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/BlackJack.iml" filepath="$PROJECT_DIR$/.idea/BlackJack.iml" />
++      <module fileurl="file://$PROJECT_DIR$/BlackJack.iml" filepath="$PROJECT_DIR$/BlackJack.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
