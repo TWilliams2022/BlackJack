@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic" />
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_20_ea_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_20_ea_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_20_ea_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_20_ea_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_20_ea_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_win_20_ea_7.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/players/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/players/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/players/PlayerTest.class" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +69,7 @@
       <recent name="com.blackjackproject.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BlackJackApplication">
+  <component name="RunManager" selected="JUnit.PlayerTest.receiveCard">
     <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
       <module name="BlackJack" />
@@ -102,22 +115,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="DealerTest.checkDealerHand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.players.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
-      <option name="METHOD_NAME" value="checkDealerHand" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DealerTest.clearDealerCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlackJack" />
       <extension name="coverage">
@@ -134,13 +131,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PlayerTest.receiveCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.blackjackproject.players.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
+      <option name="METHOD_NAME" value="receiveCard" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PlayerTest.receiveCard" />
         <item itemvalue="Application.BlackJackApplication" />
         <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
         <item itemvalue="JUnit.DealerTest.clearDealerCard" />
         <item itemvalue="JUnit.DealerTest.checkDealerCard" />
-        <item itemvalue="JUnit.DealerTest.checkDealerHand" />
       </list>
     </recent_temporary>
   </component>
