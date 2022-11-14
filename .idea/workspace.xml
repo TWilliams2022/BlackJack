@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Added game logic">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_20_ea_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_20_ea_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_20_ea_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_20_ea_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_20_ea_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_win_20_ea_7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BlackJack.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BlackJack.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
-    </list>
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668463318734</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Made changes to the game logic">
+      <created>1668465046331</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668465046331</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -199,6 +195,7 @@
     <MESSAGE value="commit" />
     <MESSAGE value="commit player Test" />
     <MESSAGE value="Added game logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added game logic" />
+    <MESSAGE value="Made changes to the game logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made changes to the game logic" />
   </component>
 </project>
