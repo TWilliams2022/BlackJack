@@ -21,6 +21,7 @@ Simple game of Black Jack!
 
 ![image](IMG/blackjackuml.png)
 
+
 ## User Story
 
 •	As a user, I want to start a game of blackjack. 
@@ -47,6 +48,7 @@ Simple game of Black Jack!
 	If at any point a hands value is greater than 21, the hand results in a loss
 	After the Player and dealer turns, the 2 hands are compared, the hand closest to 21 is the winner
     The player has the option to begin another game
+
 
 
 
