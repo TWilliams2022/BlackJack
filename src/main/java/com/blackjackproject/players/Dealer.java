@@ -21,6 +21,11 @@ public class Dealer {
         return cards.deal();
     }
 
+    public void hiddenCard(Card c){
+        Card hiddenCard = c;
+
+    }
+
     public void addACard(Card c){
 
         dealerHand.addCard(c);

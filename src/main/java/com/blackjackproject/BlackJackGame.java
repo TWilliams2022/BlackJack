@@ -35,11 +35,13 @@ public class BlackJackGame {
             System.out.println("type Hit (H) to add a card to your hand");
             String action = playerAction.nextLine();
             if (action.toLowerCase().startsWith("h")){
+                System.out.println("the dealer deals you a new card");
                 Card newCard = dealer.dealACard();
                 player.receiveCard(newCard);
                 System.out.println(newCard);
             }
             else {
+                System.out.println("you decide to stay");
                 setHit(false);
             }
 
@@ -50,18 +52,20 @@ public class BlackJackGame {
             System.out.println("your hand is bust, sorry you lose");
         }
 
+        // this is the beginning of the Dealers turn
         else {
-            // this is the beginning of the Dealers turn
             System.out.println("Your final hand value: " + player.getHandValue());
             System.out.println("its now the dealers turn");
 
-
             dealer.addACard(hiddenCard);  // turns over the dealers hidden card
             System.out.println("dealer hand: " + dealer.showHandValue());
-            if (dealer.showHandValue() < 17) {
+
+            while (dealer.showHandValue() < 17) {
                 dealer.addACard(dealer.dealACard());
+                System.out.println("the dealer draws another card");
+                System.out.println("dealer hand: " + dealer.showHandValue());
             }
-            else if (dealer.showHandValue() > 21) {
+            if (dealer.showHandValue() > 21) {
                 System.out.println("dealer hand is bust you win");
             }
             else {
@@ -73,8 +77,6 @@ public class BlackJackGame {
                 }
             }
         }
-
-
     }
 
     public boolean isHit() {
@@ -84,4 +86,11 @@ public class BlackJackGame {
     public void setHit(boolean hit) {
         this.hit = hit;
     }
+
+
+    public static void main(String[] args) {
+        BlackJackGame blackJackGame = new BlackJackGame();
+        blackJackGame.playGame();
+    }
+
 }

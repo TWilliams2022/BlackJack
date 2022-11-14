@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="09d7d1f9-746e-4dd5-bd3b-3329cb5415cb" name="Changes" comment="commit player Test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" afterDir="false" />
-    </list>
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
