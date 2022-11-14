@@ -1,0 +1,21 @@
+Index: src/main/java/com/blackjackproject/cards/Hand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.blackjackproject.cards;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic abstract class Hand {\r\n    // Fields\r\n    protected List<Card> cards;\r\n    protected int handValue;\r\n\r\n\r\n    // Constructor\r\n\r\n    public Hand() {\r\n        cards = new ArrayList<>();\r\n    }\r\n\r\n    // Business Methods\r\n    public void addCard(Card card){\r\n        cards.add(card);\r\n        setHandValue(findHandValue());\r\n    }\r\n\r\n    public void clear(){}\r\n\r\n    abstract int findHandValue();\r\n\r\n    // Setters and Getters\r\n    public List<Card> getCards() {\r\n        return cards;\r\n    }\r\n\r\n    public void setCards(List<Card> cards) {\r\n        this.cards = cards;\r\n    }\r\n\r\n    public int getHandValue() {\r\n        return handValue;\r\n    }\r\n\r\n    public void setHandValue(int handValue) {\r\n        this.handValue = handValue;\r\n\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Hand{\" +\r\n                \"cards=\" + cards +\r\n                \", handValue=\" + handValue +\r\n                '}';\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/blackjackproject/cards/Hand.java b/src/main/java/com/blackjackproject/cards/Hand.java
+--- a/src/main/java/com/blackjackproject/cards/Hand.java	(revision 38dabbe2cfe8dcaa9ba8689f6744ad0ee2088d1a)
++++ b/src/main/java/com/blackjackproject/cards/Hand.java	(date 1668442629314)
+@@ -21,7 +21,9 @@
+         setHandValue(findHandValue());
+     }
+ 
+-    public void clear(){}
++    public void clear(){
++
++    }
+ 
+     abstract int findHandValue();
+ 
