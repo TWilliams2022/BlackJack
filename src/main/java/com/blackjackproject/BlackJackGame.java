@@ -44,6 +44,8 @@ public class BlackJackGame {
             }
 
         }
+
+
         if (player.getHandValue() > 21) {
             System.out.println("your hand is bust, sorry you lose");
         }
@@ -74,9 +76,6 @@ public class BlackJackGame {
 
 
     }
-
-
-
 
     public boolean isHit() {
         return hit;
