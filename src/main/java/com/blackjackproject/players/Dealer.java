@@ -49,6 +49,13 @@ public class Dealer {
         dealerHand.clear();
     }
 
+    public void dealersTurn(){
+
+        while (dealerHand.findHandValue() < 17){
+            addACard(dealACard());
+        }
+    }
+
 
 
 }
