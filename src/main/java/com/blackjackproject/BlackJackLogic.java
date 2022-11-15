@@ -1,5 +1,8 @@
 package com.blackjackproject;
 
+import com.blackjackproject.cards.Card;
+import com.blackjackproject.cards.Rank;
+import com.blackjackproject.cards.Suit;
 import com.blackjackproject.players.Dealer;
 import com.blackjackproject.players.Player;
 
@@ -15,7 +18,7 @@ public class BlackJackLogic {
         player.receiveCard(dealer.dealACard());
 
         dealer.addACard(dealer.dealACard());
-
+        dealer.addACard(new Card(Rank.valueOf("0"), Suit.valueOf("")));
 
 
 

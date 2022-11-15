@@ -1,5 +1,6 @@
 package com.blackjackproject.gui;
 
+import com.blackjackproject.BlackJackLogic;
 import com.blackjackproject.players.Dealer;
 import com.blackjackproject.players.Player;
 
