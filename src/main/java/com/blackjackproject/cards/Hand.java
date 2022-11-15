@@ -21,6 +21,13 @@ public abstract class Hand {
         setHandValue(findHandValue());
     }
 
+    public void displayCards(){
+        for (Card card : cards) {
+            System.out.println(card.getRank()
+                    + " " + card.getSuit());
+        }
+    }
+
     public void clear(){
         cards = new ArrayList<>();
     }
