@@ -4,6 +4,7 @@ import com.blackjackproject.players.Dealer;
 import com.blackjackproject.players.Player;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,16 +13,23 @@ public class BlackJackLogic {
     private static JFrame frame = new BlackJackGUI();
 
     // card panels
-    CardPanels dealerPanel;
-    CardPanels playerPanel;
+    private CardPanels dealerPanel;
+    private CardPanels playerPanel;
 
     //buttons
-    JButton newGame;
-    JButton endGame;
+    private JButton newGame;
+    private JButton endGame;
+    private JButton hitButton;
+    private JButton standButton;
 
     // object
-    Dealer dealer;
-    Player player;
+    private Dealer dealer;
+    private Player player;
+
+    //labels for board
+    private JLabel labelPlayer;
+    private JLabel labelDealer;
+
 
     public void intiGui(){
         newGame = new JButton("New Game");
@@ -57,25 +65,71 @@ public class BlackJackLogic {
         player = new Player();
         dealer = new Dealer();
 
+        labelDealer = new JLabel("Dealer");
+        labelDealer.setForeground(Color.WHITE);
+        labelDealer.setFont(new Font("Arial Black",Font.BOLD, 20));
+        labelDealer.setBounds(415,158,82,28);
+        frame.getContentPane().add(labelDealer);
 
+        labelPlayer = new JLabel("Player");
+        labelPlayer.setForeground(Color.WHITE);
+        labelPlayer.setFont(new Font("Arial Black", Font.BOLD,20));
+        labelPlayer.setBounds(415,266,82,28);
+        frame.getContentPane().add(labelPlayer);
+
+
+
+        hitButton = new JButton("Hit!");
+
+        hitButton.setBounds(290,515,140,35);
+        hitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                hit();
+            }
+        });
+        frame.getContentPane().add(hitButton);
+        hitButton.requestFocus();
+
+        standButton = new JButton("Stand");
+        standButton.setBounds(470,515,140,35);
+        standButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                stand();
+            }
+        });
+
+        //TODO finish
 
     }
 
-    public void hit(){
+    private void hit(){
         player.receiveCard(dealer.dealACard());
-
+        updateCardsOnTable();
 
     }
 
-    public boolean testWinCondition(){
+    private boolean testWinCondition(){
 
         //TODO TEST BASIC WIN CODITION
         return false;
 
     }
 
+    private void stand(){
 
-    public void updateCardsOnTable(){
+        if(testWinCondition()){
+            return;
+        }
+
+        int playerScore = player.getHandValue();
+
+
+    }
+
+
+    private void updateCardsOnTable(){
         if(dealerPanel != null){
             frame.getContentPane().remove(dealerPanel);
             frame.getContentPane().remove(playerPanel);
