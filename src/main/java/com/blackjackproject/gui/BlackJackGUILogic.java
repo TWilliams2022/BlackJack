@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class BlackJackLogic {
+public class BlackJackGUILogic {
 
     private static JFrame frame = new BlackJackGUI();
 
@@ -21,6 +21,8 @@ public class BlackJackLogic {
     private JButton endGame;
     private JButton hitButton;
     private JButton standButton;
+    private JButton dealButton;
+    private JButton continueButton;
 
     // object
     private Dealer dealer;
@@ -62,8 +64,7 @@ public class BlackJackLogic {
 
     public void  deal(){
 
-        player = new Player();
-        dealer = new Dealer();
+        dealButton.setEnabled(false);
 
         labelDealer = new JLabel("Dealer");
         labelDealer.setForeground(Color.WHITE);
@@ -101,6 +102,27 @@ public class BlackJackLogic {
         });
 
         //TODO finish
+        frame.getContentPane().add(standButton);
+
+        continueButton = new JButton("Continue");
+        continueButton.setEnabled(false);
+        continueButton.setVisible(false);
+        continueButton.setBounds(290,444,320,35);
+        continueButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //TODO FIND CONTINUE;
+            }
+        });
+
+        frame.getContentPane().add(continueButton);
+        frame.repaint();
+        //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN
+
+
+        updateCardsOnTable();
+        testWinCondition();
+
 
     }
 
@@ -122,8 +144,15 @@ public class BlackJackLogic {
         if(testWinCondition()){
             return;
         }
-
         int playerScore = player.getHandValue();
+        int dealerScore = dealer.showHandValue();
+
+        // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION
+
+
+
+        updateCardsOnTable();
+
 
 
     }
@@ -147,7 +176,11 @@ public class BlackJackLogic {
     public void startGame(){
         newGame.setEnabled(false);
 
-        // TODO INITAILIZE DEALER AND DECK AND SHUFFLE;
+        player =new Player();
+
+        dealer = new Dealer();
+        dealer.shuffle();
+
 
     }
 
