@@ -38,7 +38,10 @@ public class Player {
         playerHand.displayCards();
     }
 
+    public int playerHandCount(){
 
+        return playerHand.getCards().size();
+    }
 
 }
 

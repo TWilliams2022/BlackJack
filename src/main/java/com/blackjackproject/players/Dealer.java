@@ -45,6 +45,15 @@ public class Dealer {
         dealerHand.displayCards();
     }
 
+    public BlackJackHand getDealerHand() {
+        return dealerHand;
+    }
+
+    public int getDealerHandCount(){
+
+        return dealerHand.getCards().size();
+    }
+
     public void dealersTurn(){
 
         while (dealerHand.findHandValue() < 17){
