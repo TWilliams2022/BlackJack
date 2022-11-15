@@ -9,31 +9,38 @@ import java.util.Scanner;
 
 public class BlackJackGame {
 
-    private boolean play = true;
-    private boolean hit = true;
+    private boolean play = true;  //set false to end the game
+    private boolean hit = true;  //set false to end player turn
+
     private Scanner playerAction = new Scanner(System.in);
+
+    // create dealer and player objects
     Dealer dealer = new Dealer();
     Player player = new Player();
 
 
 
     public void playGame() {
-        // Suffle deck and deal initial cards
+        // Shuffle the starting deck
         dealer.shuffle();
 
-        // while loop to deal a new game until exit is chosen
+        // while loop, initializes game until play boolean set to false
         while (play) {
 
             // set conditions for a new game
+            // clear player and dealer hand
             setHit(true);
             dealer.clearHand();
             player.clearPlayerHand();
 
+
             // deal cards to begin game
+            // two cards are dealt to each player
+            // one dealer card is hidden
             Card player1 = dealer.dealACard();
             Card dealer1 = dealer.dealACard();
             Card player2 = dealer.dealACard();
-            Card hiddenCard = dealer.dealACard(); //this is the dealers face down card
+            Card hiddenCard = dealer.dealACard(); //dealers face down card
             player.receiveCard(player1);
             dealer.addACard(dealer1);
             player.receiveCard(player2);
@@ -42,11 +49,10 @@ public class BlackJackGame {
             System.out.println("Dealer Hand: " + dealer.showHandValue());
 
 
-//            Begins the players turn
-//            hit button or stay button
-//            will add a card to the players hand on hit and move to dealers turn on stay
-//            player hand above 21 also exits loop
-
+            //Begins the players turn
+            //hit button or stay button
+            //will add a card to the players hand on hit and move to dealers turn on stay
+            //player hand above 21 also exits loop
             while (hit && player.getHandValue() <= 21) {
                 System.out.println("<<Player Hand>>");
                 player.displayPlayerCards();
@@ -63,15 +69,14 @@ public class BlackJackGame {
                 }
             }
 
-//             player loss if hand is bust
-
+             //player loss if hand is bust
             if (player.getHandValue() > 21) {
                 System.out.println("your hand is bust, sorry you lose...");
             }
 
-//             beginning of the Dealers turn
-//             dealer will add a card to its hand until hand value is greater than 17
 
+            //beginning of the Dealers turn
+            //dealer will add a card to its hand until hand value is greater than 17
             else {
                 System.out.println("Your final hand value: " + player.getHandValue());
                 System.out.println("its now the dealers turn");
@@ -81,7 +86,7 @@ public class BlackJackGame {
                 dealer.displayDealerHand();
                 System.out.println("Dealer Value: " + dealer.showHandValue());
 
-
+                // dealer will continue to draw until hand > 17
                 while (dealer.showHandValue() < 17) {
 
                     System.out.println("the dealer draws another card");
@@ -90,9 +95,13 @@ public class BlackJackGame {
                     dealer.displayDealerHand();
                     System.out.println("Dealer Value: " + dealer.showHandValue());
                 }
+                // Dealer loss if hand is bust
                 if (dealer.showHandValue() > 21) {
                     System.out.println("dealer hand is bust you win!!!");
-                } else {
+                }
+                // compare dealer hand to Player hand
+                // if player hand is >= dealer, the player wins
+                else {
                     if (dealer.showHandValue() > player.getHandValue()) {
                         System.out.println("The dealer is the winner...");
                     } else {
@@ -101,20 +110,25 @@ public class BlackJackGame {
                 }
             }
 
-//             this hand is over,
-//             continue button, exit button
-
+            //this hand is over,
+            //continue button, exit button
             System.out.println("type yes (y) to continue...");
             String playAgain = playerAction.nextLine();
+
+            // Continue
             if (playAgain.toLowerCase().startsWith("y")) {
                 System.out.println("get ready for the next round!!!");
             }
+            // Exit
             else {
                 System.out.println("Goodbye, play again soon");
                 setPlay(false);
             }
         }
     }
+
+    // Setters and getters for gameplay logic
+
 
     public boolean isPlay() {
         return play;

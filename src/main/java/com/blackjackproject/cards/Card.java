@@ -1,14 +1,20 @@
 package com.blackjackproject.cards;
 
 public class Card {
+
+    // Card Fields
     private Rank rank;
     private Suit suit;
 
+
+    // Card Constructors
     public Card(Rank rank, Suit suit) {
         this.rank = rank;
         this.suit = suit;
     }
 
+
+    // Card Setters and Getters
     public int getValue() {
         return rank.getValue();
     }
@@ -28,6 +34,7 @@ public class Card {
     public void setSuit(Suit suit) {
         this.suit = suit;
     }
+
 
     @Override
     public String toString() {
