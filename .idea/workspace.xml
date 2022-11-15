@@ -4,19 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_20_ea_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_20_ea_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_20_ea_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_20_ea_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_20_ea_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_swing_win_20_ea_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/players/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/players/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/players/PlayerTest.class" beforeDir="false" />
+    <list default="true" id="09d7d1f9-746e-4dd5-bd3b-3329cb5415cb" name="Changes" comment="commit player Test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/Images.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/GUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/GUI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +32,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="fgr8kn5i" />
@@ -64,12 +70,15 @@
       <recent name="" />
       <recent name="junit.framework.TestCase" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\henmelen\BlackJack\src\main\java\com\blackjackproject\gui" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.blackjackproject.players" />
       <recent name="com.blackjackproject.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest.receiveCard">
+  <component name="RunManager" selected="Application.BlackJackGui">
     <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
       <module name="BlackJack" />
@@ -79,6 +88,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BlackJackGui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BlackJackGui" />
+      <module name="BlackJack" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -94,22 +110,6 @@
       <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
       <option name="METHOD_NAME" value="DealerCardReceived" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DealerTest.checkDealerCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.players.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
-      <option name="METHOD_NAME" value="checkDealerCard" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,18 +149,18 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PlayerTest.receiveCard" />
+        <item itemvalue="Application.BlackJackGui" />
         <item itemvalue="Application.BlackJackApplication" />
+        <item itemvalue="JUnit.PlayerTest.receiveCard" />
         <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
         <item itemvalue="JUnit.DealerTest.clearDealerCard" />
-        <item itemvalue="JUnit.DealerTest.checkDealerCard" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="" />
+      <changelist id="09d7d1f9-746e-4dd5-bd3b-3329cb5415cb" name="Changes" comment="commit player Test" />
       <created>1667962595374</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

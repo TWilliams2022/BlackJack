@@ -21,4 +21,12 @@ public class Card {
                 '}';
     }
 
+    public String getImgFile() {
+
+        if(getValue() == 0){
+            return "" ;//TODO BACK OF CARD IMG
+        }
+
+        return String.format("", this.rank,this.suit);
+    }
 }
