@@ -65,6 +65,12 @@ public class Dealer {
         }
     }
 
+    public int getDealerHandCount(){
 
+        return this.dealerHand.getCards().size();
+    }
 
+    public BlackJackHand getDealerHand() {
+        return dealerHand;
+    }
 }
