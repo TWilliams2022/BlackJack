@@ -33,6 +33,10 @@ public class Player {
         playerHand.clear();
     }
 
+    public void displayPlayerCards() {
+        playerHand.displayCards();
+    }
+
 
 
 }
