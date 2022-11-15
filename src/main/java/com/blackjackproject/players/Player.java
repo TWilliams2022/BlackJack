@@ -5,42 +5,40 @@ import com.blackjackproject.cards.Card;
 
 public class Player {
 
+
+    // Player Fields
     private BlackJackHand playerHand;
 
 
-    public BlackJackHand getPlayerHand() {
-        return playerHand;
-    }
-
-
+    // Player Constructor
     public Player() {
-        playerHand = new BlackJackHand();
+        playerHand = new BlackJackHand();  // Creates new blackjack hand attached to player
     }
 
 
-    public void receiveCard(Card c){
+    // Player Business Methods
 
+    public void receiveCard(Card c){        // add card to PLayer Hand
         playerHand.addCard(c);
     }
 
-    public int getHandValue(){
+    public BlackJackHand getPlayerHand() {  // returns the players whole hand
+        return playerHand;
+    }
 
+    public int getHandValue(){              // Calculate player hand value
         return playerHand.getHandValue();
     }
 
-    public void clearPlayerHand(){
-
+    public void clearPlayerHand(){          // Clear player hand
         playerHand.clear();
     }
 
-    public void displayPlayerCards() {
+    public void displayPlayerCards() {      // Display all cards in player hand by rank and suit
         playerHand.displayCards();
     }
 
-    public int playerHandCount(){
 
-        return playerHand.getCards().size();
-    }
 
 }
 

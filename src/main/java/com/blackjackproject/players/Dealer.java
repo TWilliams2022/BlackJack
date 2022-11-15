@@ -6,51 +6,38 @@ import com.blackjackproject.cards.Deck;
 
 public class Dealer {
 
+    // Dealer Fields
     private BlackJackHand dealerHand;
     private Deck cards;
 
-
+    // Dealer constructor
     public Dealer() {
         dealerHand = new BlackJackHand();
         cards = new Deck();
     }
 
-
-    public Card dealACard(){
-
+    // Dealer Business methods
+    public Card dealACard(){       // pull a card from the deck
         return cards.deal();
     }
 
-    public void hiddenCard(Card c){
-        Card hiddenCard = c;
-
-    }
-
-    public void addACard(Card c){
-
+    public void addACard(Card c){   // add card to dealers hand
         dealerHand.addCard(c);
-
     }
 
-
-    public int showHandValue(){
-
+    public int showHandValue(){             // calculate dealer hand value
         return dealerHand.findHandValue();
     }
 
-
-    public int remainingCards(){
-
+    public int remainingCards(){        //
         return cards.checkDeckSize();
     }
 
     public void shuffle(){
-
         cards.shuffle();
     }
 
     public void clearHand(){
-
         dealerHand.clear();
     }
 
@@ -65,12 +52,6 @@ public class Dealer {
         }
     }
 
-    public int getDealerHandCount(){
 
-        return this.dealerHand.getCards().size();
-    }
 
-    public BlackJackHand getDealerHand() {
-        return dealerHand;
-    }
 }
