@@ -37,14 +37,16 @@ public class BlackJackGame {
             player.receiveCard(player1);
             dealer.addACard(dealer1);
             player.receiveCard(player2);
+            System.out.println("<<Dealer Hand>>");
+            dealer.displayDealerHand();
+            System.out.println("Dealer Hand: " + dealer.showHandValue());
 
-            System.out.println("The Dealer Has: " + dealer.showHandValue());
 
+//            Begins the players turn
+//            hit button or stay button
+//            will add a card to the players hand on hit and move to dealers turn on stay
+//            player hand above 21 also exits loop
 
-            // Begins the players turn
-            // hit button or stay button
-            // will add a card to the players hand on hit and move to dealers turn on stay
-            // player hand above 21 also exits loop
             while (hit && player.getHandValue() <= 21) {
                 System.out.println("<<Player Hand>>");
                 player.displayPlayerCards();
@@ -61,13 +63,15 @@ public class BlackJackGame {
                 }
             }
 
-            // player loss if hand is bust
+//             player loss if hand is bust
+
             if (player.getHandValue() > 21) {
-                System.out.println("your hand is bust, sorry you lose");
+                System.out.println("your hand is bust, sorry you lose...");
             }
 
-            // beginning of the Dealers turn
-            // dealer will add a card to its hand until hand value is greater than 17
+//             beginning of the Dealers turn
+//             dealer will add a card to its hand until hand value is greater than 17
+
             else {
                 System.out.println("Your final hand value: " + player.getHandValue());
                 System.out.println("its now the dealers turn");
@@ -87,24 +91,26 @@ public class BlackJackGame {
                     System.out.println("Dealer Value: " + dealer.showHandValue());
                 }
                 if (dealer.showHandValue() > 21) {
-                    System.out.println("dealer hand is bust you win");
+                    System.out.println("dealer hand is bust you win!!!");
                 } else {
                     if (dealer.showHandValue() > player.getHandValue()) {
-                        System.out.println("the dealer is the winner");
+                        System.out.println("The dealer is the winner...");
                     } else {
-                        System.out.println("congratulations you win");
+                        System.out.println("Congratulations you win!!!");
                     }
                 }
             }
 
-            // the game hand is over, continue button, exit button
+//             this hand is over,
+//             continue button, exit button
+
             System.out.println("type yes (y) to continue...");
             String playAgain = playerAction.nextLine();
             if (playAgain.toLowerCase().startsWith("y")) {
-                System.out.println("get ready for the next round");
+                System.out.println("get ready for the next round!!!");
             }
             else {
-                System.out.println("goodbye");
+                System.out.println("Goodbye, play again soon");
                 setPlay(false);
             }
         }
