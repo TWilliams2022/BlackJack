@@ -47,9 +47,9 @@ public class Card {
     public String getImgFile() {
 
         if(getValue() == 0){
-            return "" ;//TODO BACK OF CARD IMG
+            return "cardImages/backCover.png" ;
         }
 
-        return String.format("", this.rank,this.suit);
+        return String.format("CardImages/%s/%s.png", this.suit,this.rank);
     }
 }
