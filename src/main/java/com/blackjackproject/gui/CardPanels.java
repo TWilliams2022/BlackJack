@@ -20,7 +20,8 @@ public class CardPanels extends JPanel {
 
         int total = hand.getHandValue();
 
-        // TODO 21 game LOGIC
+        // TODO 21 GAME LOGIC
+
 
 
         // player Labels
