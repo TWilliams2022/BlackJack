@@ -1,0 +1,183 @@
+Index: src/main/java/com/blackjackproject/BlackJackGame.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.blackjackproject;\r\n\r\nimport com.blackjackproject.cards.Card;\r\nimport com.blackjackproject.players.Dealer;\r\nimport com.blackjackproject.players.Player;\r\n\r\nimport java.util.Locale;\r\nimport java.util.Scanner;\r\n\r\npublic class BlackJackGame {\r\n\r\n    private boolean hit = true;\r\n    private Scanner playerAction = new Scanner(System.in);\r\n    Dealer dealer = new Dealer();\r\n    Player player = new Player();\r\n\r\n\r\n\r\n    public void playGame() {\r\n        // Suffle deck and deal initial cards\r\n        dealer.shuffle();\r\n        Card player1 = dealer.dealACard();\r\n        Card dealer1 = dealer.dealACard();\r\n        Card player2 = dealer.dealACard();\r\n        Card hiddenCard = dealer.dealACard(); //this is the dealers face down card\r\n        player.receiveCard(player1);\r\n        dealer.addACard(dealer1);\r\n        player.receiveCard(player2);\r\n\r\n        System.out.println(\"The Dealer Has: \" + dealer.showHandValue());\r\n\r\n        // Begins the players turn asking for a hit or stay prompt\r\n        while (hit == true) {\r\n            System.out.println(\"Your hand is: \" + player.getHandValue());\r\n            System.out.println(\"type Hit (H) to add a card to your hand\");\r\n            String action = playerAction.nextLine();\r\n            if (action.toLowerCase().startsWith(\"h\")){\r\n                System.out.println(\"the dealer deals you a new card\");\r\n                Card newCard = dealer.dealACard();\r\n                player.receiveCard(newCard);\r\n                System.out.println(newCard);\r\n            }\r\n            else {\r\n                System.out.println(\"you decide to stay\");\r\n                setHit(false);\r\n            }\r\n\r\n        }\r\n\r\n\r\n        if (player.getHandValue() > 21) {\r\n            System.out.println(\"your hand is bust, sorry you lose\");\r\n        }\r\n\r\n        // this is the beginning of the Dealers turn\r\n        else {\r\n            System.out.println(\"Your final hand value: \" + player.getHandValue());\r\n            System.out.println(\"its now the dealers turn\");\r\n\r\n            dealer.addACard(hiddenCard);  // turns over the dealers hidden card\r\n            System.out.println(\"dealer hand: \" + dealer.showHandValue());\r\n\r\n            while (dealer.showHandValue() < 17) {\r\n                dealer.addACard(dealer.dealACard());\r\n                System.out.println(\"the dealer draws another card\");\r\n                System.out.println(\"dealer hand: \" + dealer.showHandValue());\r\n            }\r\n            if (dealer.showHandValue() > 21) {\r\n                System.out.println(\"dealer hand is bust you win\");\r\n            }\r\n            else {\r\n                if (dealer.showHandValue() > player.getHandValue()) {\r\n                    System.out.println(\"the dealer is the winner\");\r\n                }\r\n                else {\r\n                    System.out.println(\"congratulations you win\");\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    public boolean isHit() {\r\n        return hit;\r\n    }\r\n\r\n    public void setHit(boolean hit) {\r\n        this.hit = hit;\r\n    }\r\n\r\n\r\n    public static void main(String[] args) {\r\n        BlackJackGame blackJackGame = new BlackJackGame();\r\n        blackJackGame.playGame();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/blackjackproject/BlackJackGame.java b/src/main/java/com/blackjackproject/BlackJackGame.java
+--- a/src/main/java/com/blackjackproject/BlackJackGame.java	(revision f793f68763d6db5a5cac3902378ecd5a3089a85b)
++++ b/src/main/java/com/blackjackproject/BlackJackGame.java	(date 1668465885714)
+@@ -38,7 +38,6 @@
+                 System.out.println("the dealer deals you a new card");
+                 Card newCard = dealer.dealACard();
+                 player.receiveCard(newCard);
+-                System.out.println(newCard);
+             }
+             else {
+                 System.out.println("you decide to stay");
+@@ -61,8 +60,8 @@
+             System.out.println("dealer hand: " + dealer.showHandValue());
+ 
+             while (dealer.showHandValue() < 17) {
+-                dealer.addACard(dealer.dealACard());
+                 System.out.println("the dealer draws another card");
++                dealer.addACard(dealer.dealACard());
+                 System.out.println("dealer hand: " + dealer.showHandValue());
+             }
+             if (dealer.showHandValue() > 21) {
+@@ -76,6 +75,7 @@
+                     System.out.println("congratulations you win");
+                 }
+             }
++
+         }
+     }
+ 
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"Made changes to the game logic\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit3 Test Class\" />\r\n        <option value=\"JUnit4 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"fgr8kn5i\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HIBCwIiGU6vTHYvH71IgmyFPgq\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenPackages\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit4\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3\" value=\"junit.framework.TestCase\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4\" value=\"\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n      <recent name=\"junit.framework.TestCase\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"com.blackjackproject.players\" />\r\n      <recent name=\"com.blackjackproject.cards\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.BlackJackApplication\">\r\n    <configuration name=\"BlackJackApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackApplication\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.DealerCardReceived\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DealerCardReceived\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.checkDealerCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"checkDealerCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.checkDealerHand\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"checkDealerHand\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.clearDealerCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"clearDealerCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.BlackJackApplication\" />\r\n        <item itemvalue=\"JUnit.DealerTest.DealerCardReceived\" />\r\n        <item itemvalue=\"JUnit.DealerTest.clearDealerCard\" />\r\n        <item itemvalue=\"JUnit.DealerTest.checkDealerCard\" />\r\n        <item itemvalue=\"JUnit.DealerTest.checkDealerHand\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\" />\r\n      <created>1667962595374</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667962595374</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <created>1668443384290</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668443384290</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit player Test\">\r\n      <created>1668447034648</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668447034648</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"commit player Test\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"commit player Test\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision f793f68763d6db5a5cac3902378ecd5a3089a85b)
++++ b/.idea/workspace.xml	(date 1668465941364)
+@@ -4,7 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic" />
++    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -56,7 +61,7 @@
+       <recent name="com.blackjackproject.cards" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.BlackJackApplication">
++  <component name="RunManager" selected="JUnit.PlayerTest">
+     <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
+       <module name="BlackJack" />
+@@ -70,23 +75,20 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DealerTest.DealerCardReceived" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackGame" />
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.blackjackproject.players.*" />
++          <option name="PATTERN" value="com.blackjackproject.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
+-      <option name="METHOD_NAME" value="DealerCardReceived" />
+-      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DealerTest.checkDealerCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="DealerTest.DealerCardReceived" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -96,13 +98,13 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
+-      <option name="METHOD_NAME" value="checkDealerCard" />
++      <option name="METHOD_NAME" value="DealerCardReceived" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DealerTest.checkDealerHand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -111,14 +113,13 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
+-      <option name="METHOD_NAME" value="checkDealerHand" />
+-      <option name="TEST_OBJECT" value="method" />
++      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
++      <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DealerTest.clearDealerCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="PlayerTest.receiveCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+@@ -127,8 +128,8 @@
+         </pattern>
+       </extension>
+       <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
+-      <option name="METHOD_NAME" value="clearDealerCard" />
++      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
++      <option name="METHOD_NAME" value="receiveCard" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -136,11 +137,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="JUnit.PlayerTest" />
++        <item itemvalue="JUnit.PlayerTest.receiveCard" />
++        <item itemvalue="Application.BlackJackGame" />
+         <item itemvalue="Application.BlackJackApplication" />
+         <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
+-        <item itemvalue="JUnit.DealerTest.clearDealerCard" />
+-        <item itemvalue="JUnit.DealerTest.checkDealerCard" />
+-        <item itemvalue="JUnit.DealerTest.checkDealerHand" />
+       </list>
+     </recent_temporary>
+   </component>
+@@ -167,7 +168,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1668447034648</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="Made changes to the game logic">
++      <created>1668465512651</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1668465512651</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -185,6 +193,7 @@
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="commit" />
+     <MESSAGE value="commit player Test" />
+-    <option name="LAST_COMMIT_MESSAGE" value="commit player Test" />
++    <MESSAGE value="Made changes to the game logic" />
++    <option name="LAST_COMMIT_MESSAGE" value="Made changes to the game logic" />
+   </component>
+ </project>
+\ No newline at end of file
