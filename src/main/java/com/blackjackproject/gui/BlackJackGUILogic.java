@@ -114,7 +114,8 @@ public class BlackJackGUILogic {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO FIND CONTINUE;
+                //TODO FIND CONTINUE; rework
+                acceptOutcome();
             }
         });
 
@@ -136,6 +137,7 @@ public class BlackJackGUILogic {
         updateCardsOnTable();
         testBustCondition();
         testDealerBustCondition();
+
     }
 
     public boolean testBustCondition() {
@@ -154,7 +156,7 @@ public class BlackJackGUILogic {
             return false;
         }
     }
-
+    /// TODO REWORK SO THE GUI END GAME AND ASK FOR A CONTINUE OR END GAME;
     private boolean testWinCondition(){
         boolean result = false;
         if (dealer.showHandValue() >= player.getHandValue()) {
@@ -171,6 +173,7 @@ public class BlackJackGUILogic {
         if(testWinCondition()){
             return;
         }
+
         // Ace values take care of them
         int playerScore = player.getHandValue();
         // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION - check
@@ -189,7 +192,6 @@ public class BlackJackGUILogic {
             frame.getContentPane().remove(dealerPanel);
             frame.getContentPane().remove(playerPanel);
         }
-
         dealerPanel = new CardPanels(dealer.getDealerHand(),420 - (dealer.getDealerHandCount() * 40),50,70,104,10);
         frame.getContentPane().add(dealerPanel);
 
@@ -221,6 +223,21 @@ public class BlackJackGUILogic {
 
     public void continueButton() {
         deal();
+    }
+
+
+    public void acceptOutcome(){
+
+        frame.getContentPane().remove(hitButton);
+        frame.getContentPane().remove(standButton);
+        frame.getContentPane().remove(labelDealer);
+        frame.getContentPane().remove(playerPanel);
+        frame.getContentPane().remove(continueButton);
+
+        dealButton.setVisible(true);
+        dealButton.requestFocus();
+        frame.repaint();
+
     }
 
     public static void main(String[] args) {

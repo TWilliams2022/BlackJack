@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Changes Gui game logic&#10;-add new methods to test win conditions">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" afterDir="false" />
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackLogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,28 +177,7 @@
       <option name="project" value="LOCAL" />
       <updated>1668547288559</updated>
     </task>
-    <task id="LOCAL-00005" summary="Changes Gui game logic&#10;-add new methods to test win conditions">
-      <created>1668617301960</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1668617301960</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Changes Gui game logic&#10;-add new methods to test win conditions">
-      <created>1668617430795</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1668617430795</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Changes Gui game logic&#10;-add new methods to test win conditions">
-      <created>1668618131696</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1668618131696</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -230,7 +197,6 @@
     <MESSAGE value="commit player Test" />
     <MESSAGE value="Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues" />
     <MESSAGE value="Layout Changes&#10;- added notes to several classes" />
-    <MESSAGE value="Changes Gui game logic&#10;-add new methods to test win conditions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes Gui game logic&#10;-add new methods to test win conditions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Layout Changes&#10;- added notes to several classes" />
   </component>
 </project>
