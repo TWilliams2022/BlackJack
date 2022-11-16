@@ -1,0 +1,1347 @@
+Index: src/main/java/com/blackjackproject/players/Dealer.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.blackjackproject.players;\r\n\r\nimport com.blackjackproject.cards.BlackJackHand;\r\nimport com.blackjackproject.cards.Card;\r\nimport com.blackjackproject.cards.Deck;\r\n\r\npublic class Dealer {\r\n\r\n    // Dealer Fields\r\n    private BlackJackHand dealerHand;\r\n    private Deck cards;\r\n\r\n    // Dealer constructor\r\n    public Dealer() {\r\n        dealerHand = new BlackJackHand();\r\n        cards = new Deck();\r\n    }\r\n\r\n    // Dealer Business methods\r\n    public Card dealACard(){       // pull a card from the deck\r\n        return cards.deal();\r\n    }\r\n\r\n    public void addACard(Card c){   // add card to dealers hand\r\n        dealerHand.addCard(c);\r\n    }\r\n\r\n    public int showHandValue(){\r\n        int handValue = dealerHand.findHandValue();// calculate dealer hand value\r\n\r\n        return handValue;\r\n    }\r\n\r\n    public int remainingCards(){        //\r\n        return cards.checkDeckSize();\r\n    }\r\n\r\n    public void shuffle(){\r\n        cards.shuffle();\r\n    }\r\n\r\n    public void clearHand(){\r\n        dealerHand.clear();\r\n    }\r\n\r\n    public void displayDealerHand() {\r\n        dealerHand.displayCards();\r\n    }\r\n\r\n    public BlackJackHand getDealerHand() {\r\n        return dealerHand;\r\n    }\r\n\r\n    public int getDealerHandCount(){\r\n\r\n        return dealerHand.getCards().size();\r\n    }\r\n\r\n    public void dealersTurn(){\r\n\r\n        while (dealerHand.findHandValue() < 17){\r\n            addACard(dealACard());\r\n        }\r\n    }\r\n\r\n    private int numofAces(){\r\n        int count = 0;\r\n        for(Card card : dealerHand.getCards()){\r\n            if(card.getValue() == 11){\r\n                count++;\r\n            }\r\n\r\n        }\r\n        return count;\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/blackjackproject/players/Dealer.java b/src/main/java/com/blackjackproject/players/Dealer.java
+--- a/src/main/java/com/blackjackproject/players/Dealer.java	(revision 5d3e36e551b26829976fe9d92afc0e88c849e7e3)
++++ b/src/main/java/com/blackjackproject/players/Dealer.java	(date 1668569941887)
+@@ -63,7 +63,7 @@
+         }
+     }
+ 
+-    private int numofAces(){
++    private int numOfAces(){
+         int count = 0;
+         for(Card card : dealerHand.getCards()){
+             if(card.getValue() == 11){
+Index: src/main/test/com/blackjackproject/cards/HandTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.blackjackproject.cards;\r\n\r\nimport org.junit.Before;\r\nimport org.junit.Test;\r\n\r\nimport static org.junit.Assert.*;\r\n\r\npublic class HandTest {\r\n    private Card sixHearts;\r\n    private BlackJackHand hand;\r\n    private Card sevenDiamonds;\r\n\r\n    @Before\r\n    public void setUp() throws Exception {\r\n        sixHearts = new Card(Rank.SIX, Suit.Hearts);\r\n        sevenDiamonds = new Card(Rank.SEVEN,Suit.Diamond);\r\n        hand = new BlackJackHand();\r\n    }\r\n\r\n    @Test\r\n    public void test_add_card() {\r\n        hand.addCard(sixHearts);\r\n        assertEquals(1,hand.getCards().size());\r\n\r\n    }\r\n\r\n    @Test\r\n    public void test_find_hand_value() {\r\n        hand.addCard(sixHearts);\r\n        hand.addCard(sevenDiamonds);\r\n        assertEquals(13, hand.findHandValue());\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/test/com/blackjackproject/cards/HandTest.java b/src/main/test/com/blackjackproject/cards/HandTest.java
+--- a/src/main/test/com/blackjackproject/cards/HandTest.java	(revision 5d3e36e551b26829976fe9d92afc0e88c849e7e3)
++++ b/src/main/test/com/blackjackproject/cards/HandTest.java	(date 1668569556117)
+@@ -9,11 +9,13 @@
+     private Card sixHearts;
+     private BlackJackHand hand;
+     private Card sevenDiamonds;
++    private Card aceDiamonds;
+ 
+     @Before
+     public void setUp() throws Exception {
+         sixHearts = new Card(Rank.SIX, Suit.Hearts);
+         sevenDiamonds = new Card(Rank.SEVEN,Suit.Diamond);
++        aceDiamonds = new Card(Rank.ACE,Suit.Diamond);
+         hand = new BlackJackHand();
+     }
+ 
+@@ -29,6 +31,14 @@
+         hand.addCard(sixHearts);
+         hand.addCard(sevenDiamonds);
+         assertEquals(13, hand.findHandValue());
++    }
++
++    @Test
++    public void test_find_hand_value_With_Aces() {
++        hand.addCard(sixHearts);
++        hand.addCard(sevenDiamonds);
++        hand.addCard(aceDiamonds);
++        assertEquals(14, hand.findHandValue());
+ 
+     }
+ }
+Index: src/main/java/com/blackjackproject/cards/BlackJackHand.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.blackjackproject.cards;\r\n\r\npublic class BlackJackHand extends Hand {\r\n\r\n    // Blackjack hand constructor\r\n    public BlackJackHand() {\r\n    }\r\n\r\n\r\n    // blackjack hand business methods\r\n    @Override\r\n    public int findHandValue() {          //calculate hand value\r\n        handValue = cards.stream()\r\n            .mapToInt(x -> x.getValue())\r\n            .sum();\r\n\r\n        if(handValue > 21 && numOfAces() > 0){\r\n            handValue = handValue - 10;\r\n        }\r\n        return handValue;\r\n    }\r\n\r\n\r\n    private int numOfAces(){\r\n\r\n        int count = 0;\r\n\r\n        for(Card card : cards){\r\n            if(card.getValue() == 11){\r\n               count++;\r\n            }\r\n        }\r\n        return count;\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/blackjackproject/cards/BlackJackHand.java b/src/main/java/com/blackjackproject/cards/BlackJackHand.java
+--- a/src/main/java/com/blackjackproject/cards/BlackJackHand.java	(revision 5d3e36e551b26829976fe9d92afc0e88c849e7e3)
++++ b/src/main/java/com/blackjackproject/cards/BlackJackHand.java	(date 1668569941896)
+@@ -14,13 +14,13 @@
+             .mapToInt(x -> x.getValue())
+             .sum();
+ 
+-        if(handValue > 21 && numOfAces() > 0){
++        if(handValue > 21 && numOfAces() > 0){      // gives ace a value of 1 if total is >21
+             handValue = handValue - 10;
+         }
+         return handValue;
+     }
+ 
+-
++    // private internal method to return a count of aces in a hand
+     private int numOfAces(){
+ 
+         int count = 0;
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1668569290648)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM__Changes_.xml	(date 1668569290648)
+@@ -0,0 +1,59 @@
++<changelist name="Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]" date="1668569112789" recycled="false" toDelete="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/15/2022 10:25 PM [Changes]" />
++  <binary>
++    <option name="BEFORE_PATH" value="target/test-classes/com/blackjackproject/cards/HandTest.class" />
++    <option name="AFTER_PATH" value="target/test-classes/com/blackjackproject/cards/HandTest.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/HandTest.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Player.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/BlackJackHand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/Card.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackGUI.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/gui/BlackJackGUI.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/BlackJackGUI.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/Dealer.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/Deck.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/BlackJackGame.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM_[Changes]/Hand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++</changelist>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"commit player Test\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Suit.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Suit.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUI.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUI.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit3 Test Class\" />\r\n        <option value=\"JUnit4 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"fgr8kn5i\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HIBCwIiGU6vTHYvH71IgmyFPgq\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenPackages\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit4\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3\" value=\"junit.framework.TestCase\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4\" value=\"\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n      <recent name=\"junit.framework.TestCase\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"com.blackjackproject.players\" />\r\n      <recent name=\"com.blackjackproject.cards\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.BlackJackGUILogic\">\r\n    <configuration name=\"BlackJackApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackApplication\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BlackJackGUILogic\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.gui.BlackJackGUILogic\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.gui.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BlackJackGame\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackGame\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.DealerCardReceived\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DealerCardReceived\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PlayerTest.receiveCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.PlayerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"receiveCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.BlackJackGUILogic\" />\r\n        <item itemvalue=\"Application.BlackJackGame\" />\r\n        <item itemvalue=\"Application.BlackJackApplication\" />\r\n        <item itemvalue=\"JUnit.PlayerTest.receiveCard\" />\r\n        <item itemvalue=\"JUnit.DealerTest.DealerCardReceived\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\" />\r\n      <created>1667962595374</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667962595374</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <created>1668443384290</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668443384290</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit player Test\">\r\n      <created>1668447034648</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668447034648</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\">\r\n      <created>1668530941310</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668530941310</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Layout Changes&#10;- added notes to several classes\">\r\n      <created>1668547288559</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668547288559</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"commit player Test\" />\r\n    <MESSAGE value=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\" />\r\n    <MESSAGE value=\"Layout Changes&#10;- added notes to several classes\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Layout Changes&#10;- added notes to several classes\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 5d3e36e551b26829976fe9d92afc0e88c849e7e3)
++++ b/.idea/workspace.xml	(date 1668570428919)
+@@ -5,21 +5,37 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_10_25_PM__Changes_.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/BlackJackApplication.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/Card.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/BlackJackHand.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Card.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Dealer.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Deck.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Hand.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM__Changes_.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/BlackJackHand.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Card.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Dealer.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Deck.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Hand.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM__Changes_.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/BlackJackHand.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Card.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Dealer.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Deck.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Hand.class" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/shelved.patch" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Suit.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUI.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/HandTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/blackjackproject/cards/HandTest.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -112,17 +128,17 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DealerTest.DealerCardReceived" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="HandTest.test_find_hand_value_With_Aces" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="BlackJack" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="com.blackjackproject.players.*" />
++          <option name="PATTERN" value="com.blackjackproject.cards.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
+-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
+-      <option name="METHOD_NAME" value="DealerCardReceived" />
++      <option name="PACKAGE_NAME" value="com.blackjackproject.cards" />
++      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.cards.HandTest" />
++      <option name="METHOD_NAME" value="test_find_hand_value_With_Aces" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -147,10 +163,10 @@
+     <recent_temporary>
+       <list>
+         <item itemvalue="Application.BlackJackGUILogic" />
+-        <item itemvalue="Application.BlackJackGame" />
++        <item itemvalue="JUnit.HandTest.test_find_hand_value_With_Aces" />
+         <item itemvalue="Application.BlackJackApplication" />
++        <item itemvalue="Application.BlackJackGame" />
+         <item itemvalue="JUnit.PlayerTest.receiveCard" />
+-        <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1668569272858)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM_[Changes]/shelved.patch	(date 1668569272858)
+@@ -0,0 +1,587 @@
++Index: src/main/java/com/blackjackproject/players/Dealer.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.players;\r\n\r\nimport com.blackjackproject.cards.BlackJackHand;\r\nimport com.blackjackproject.cards.Card;\r\nimport com.blackjackproject.cards.Deck;\r\n\r\npublic class Dealer {\r\n\r\n    private BlackJackHand dealerHand;\r\n    private Deck cards;\r\n\r\n\r\n    public Dealer() {\r\n        dealerHand = new BlackJackHand();\r\n        cards = new Deck();\r\n    }\r\n\r\n\r\n    public Card dealACard(){\r\n\r\n        return cards.deal();\r\n    }\r\n\r\n    public void hiddenCard(Card c){\r\n        Card hiddenCard = c;\r\n\r\n    }\r\n\r\n    public void addACard(Card c){\r\n\r\n        dealerHand.addCard(c);\r\n\r\n    }\r\n\r\n\r\n    public int showHandValue(){\r\n\r\n        return dealerHand.findHandValue();\r\n    }\r\n\r\n\r\n    public int remainingCards(){\r\n\r\n        return cards.checkDeckSize();\r\n    }\r\n\r\n    public void shuffle(){\r\n\r\n        cards.shuffle();\r\n    }\r\n\r\n    public void clearHand(){\r\n\r\n        dealerHand.clear();\r\n    }\r\n\r\n    public void displayDealerHand() {\r\n        dealerHand.displayCards();\r\n    }\r\n\r\n    public void dealersTurn(){\r\n\r\n        while (dealerHand.findHandValue() < 17){\r\n            addACard(dealACard());\r\n        }\r\n    }\r\n\r\n\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/players/Dealer.java b/src/main/java/com/blackjackproject/players/Dealer.java
++--- a/src/main/java/com/blackjackproject/players/Dealer.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/players/Dealer.java	(date 1668545938705)
++@@ -6,65 +6,48 @@
++ 
++ public class Dealer {
++ 
+++
+++    // Dealer Fields
+++
++     private BlackJackHand dealerHand;
++     private Deck cards;
++ 
++ 
+++    // Dealer constructor
+++
++     public Dealer() {
++-        dealerHand = new BlackJackHand();
++-        cards = new Deck();
+++        dealerHand = new BlackJackHand();  // create new blackjack hand attached to the dealer
+++        cards = new Deck();                // create new deck
++     }
++ 
++ 
++-    public Card dealACard(){
+++    // Dealer Business methods
++ 
+++    public Card dealACard(){                // pull a card from the deck
++         return cards.deal();
++     }
++ 
++-    public void hiddenCard(Card c){
++-        Card hiddenCard = c;
++-
++-    }
++-
++-    public void addACard(Card c){
++-
+++    public void addACard(Card c){           // add card to dealers hand
++         dealerHand.addCard(c);
++-
++     }
++ 
++-
++-    public int showHandValue(){
++-
+++    public int showHandValue(){             // calculate dealer hand value
++         return dealerHand.findHandValue();
++     }
++ 
++-
++-    public int remainingCards(){
++-
+++    public int remainingCards(){            // checks the current deck size
++         return cards.checkDeckSize();
++     }
++ 
++-    public void shuffle(){
++-
+++    public void shuffle(){                  // Shuffles the deck
++         cards.shuffle();
++     }
++ 
++-    public void clearHand(){
++-
+++    public void clearHand(){                // clears the current hand
++         dealerHand.clear();
++     }
++ 
++-    public void displayDealerHand() {
+++    public void displayDealerHand() {       // display all dealer cards by rank and suit
++         dealerHand.displayCards();
++     }
++-
++-    public void dealersTurn(){
++-
++-        while (dealerHand.findHandValue() < 17){
++-            addACard(dealACard());
++-        }
++-    }
++-
++-
++-
++ }
++Index: src/main/java/com/blackjackproject/players/Player.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.players;\r\n\r\nimport com.blackjackproject.cards.BlackJackHand;\r\nimport com.blackjackproject.cards.Card;\r\n\r\npublic class Player {\r\n\r\n    private BlackJackHand playerHand;\r\n\r\n\r\n    public BlackJackHand getPlayerHand() {\r\n        return playerHand;\r\n    }\r\n\r\n\r\n    public Player() {\r\n        playerHand = new BlackJackHand();\r\n    }\r\n\r\n\r\n    public void receiveCard(Card c){\r\n\r\n        playerHand.addCard(c);\r\n    }\r\n\r\n    public int getHandValue(){\r\n\r\n        return playerHand.getHandValue();\r\n    }\r\n\r\n    public void clearPlayerHand(){\r\n\r\n        playerHand.clear();\r\n    }\r\n\r\n    public void displayPlayerCards() {\r\n        playerHand.displayCards();\r\n    }\r\n\r\n\r\n\r\n}\r\n\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/players/Player.java b/src/main/java/com/blackjackproject/players/Player.java
++--- a/src/main/java/com/blackjackproject/players/Player.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/players/Player.java	(date 1668545938738)
++@@ -5,35 +5,36 @@
++ 
++ public class Player {
++ 
+++
+++    // Player Fields
++     private BlackJackHand playerHand;
++ 
++ 
++-    public BlackJackHand getPlayerHand() {
++-        return playerHand;
++-    }
++-
++-
+++    // Player Constructor
++     public Player() {
++-        playerHand = new BlackJackHand();
+++        playerHand = new BlackJackHand();  // Creates new blackjack hand attached to player
++     }
++ 
++ 
++-    public void receiveCard(Card c){
+++    // Player Business Methods
++ 
+++    public void receiveCard(Card c){        // add card to PLayer Hand
++         playerHand.addCard(c);
++     }
++ 
++-    public int getHandValue(){
+++    public BlackJackHand getPlayerHand() {  // returns the players whole hand
+++        return playerHand;
+++    }
++ 
+++    public int getHandValue(){              // Calculate player hand value
++         return playerHand.getHandValue();
++     }
++ 
++-    public void clearPlayerHand(){
++-
+++    public void clearPlayerHand(){          // Clear player hand
++         playerHand.clear();
++     }
++ 
++-    public void displayPlayerCards() {
+++    public void displayPlayerCards() {      // Display all cards in player hand by rank and suit
++         playerHand.displayCards();
++     }
++ 
++Index: src/main/java/com/blackjackproject/cards/Card.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\npublic class Card {\r\n    private Rank rank;\r\n    private Suit suit;\r\n\r\n    public Card(Rank rank, Suit suit) {\r\n        this.rank = rank;\r\n        this.suit = suit;\r\n    }\r\n\r\n    public int getValue() {\r\n        return rank.getValue();\r\n    }\r\n\r\n    public Rank getRank() {\r\n        return rank;\r\n    }\r\n\r\n    public void setRank(Rank rank) {\r\n        this.rank = rank;\r\n    }\r\n\r\n    public Suit getSuit() {\r\n        return suit;\r\n    }\r\n\r\n    public void setSuit(Suit suit) {\r\n        this.suit = suit;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Card{\" +\r\n                \"rank=\" + rank +\r\n                \", suit=\" + suit +\r\n                '}';\r\n    }\r\n\r\n    public String getImgFile() {\r\n\r\n        if(getValue() == 0){\r\n            return \"\" ;//TODO BACK OF CARD IMG\r\n        }\r\n\r\n        return String.format(\"\", this.rank,this.suit);\r\n    }\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Card.java b/src/main/java/com/blackjackproject/cards/Card.java
++--- a/src/main/java/com/blackjackproject/cards/Card.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/cards/Card.java	(date 1668545938716)
++@@ -1,14 +1,20 @@
++ package com.blackjackproject.cards;
++ 
++ public class Card {
+++
+++    // Card Fields
++     private Rank rank;
++     private Suit suit;
++ 
+++
+++    // Card Constructors
++     public Card(Rank rank, Suit suit) {
++         this.rank = rank;
++         this.suit = suit;
++     }
++ 
+++
+++    // Card Setters and Getters
++     public int getValue() {
++         return rank.getValue();
++     }
++@@ -29,6 +35,7 @@
++         this.suit = suit;
++     }
++ 
+++
++     @Override
++     public String toString() {
++         return "Card{" +
++Index: src/main/java/com/blackjackproject/cards/BlackJackHand.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\npublic class BlackJackHand extends Hand {\r\n\r\n\r\n    public BlackJackHand() {\r\n    }\r\n\r\n    @Override\r\n    public int findHandValue() {\r\n        handValue = cards.stream()\r\n            .mapToInt(x -> x.getValue())\r\n            .sum();\r\n        return handValue;\r\n    }\r\n\r\n\r\n\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/BlackJackHand.java b/src/main/java/com/blackjackproject/cards/BlackJackHand.java
++--- a/src/main/java/com/blackjackproject/cards/BlackJackHand.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/cards/BlackJackHand.java	(date 1668545938752)
++@@ -2,12 +2,14 @@
++ 
++ public class BlackJackHand extends Hand {
++ 
++-
+++    // Blackjack hand constructor
++     public BlackJackHand() {
++     }
++ 
+++
+++    // blackjack hand business methods
++     @Override
++-    public int findHandValue() {
+++    public int findHandValue() {          //calculate hand value
++         handValue = cards.stream()
++             .mapToInt(x -> x.getValue())
++             .sum();
++Index: src/main/java/com/blackjackproject/BlackJackGame.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject;\r\n\r\nimport com.blackjackproject.cards.Card;\r\nimport com.blackjackproject.players.Dealer;\r\nimport com.blackjackproject.players.Player;\r\n\r\nimport java.util.Locale;\r\nimport java.util.Scanner;\r\n\r\npublic class BlackJackGame {\r\n\r\n    private boolean play = true;\r\n    private boolean hit = true;\r\n    private Scanner playerAction = new Scanner(System.in);\r\n    Dealer dealer = new Dealer();\r\n    Player player = new Player();\r\n\r\n\r\n\r\n    public void playGame() {\r\n        // Suffle deck and deal initial cards\r\n        dealer.shuffle();\r\n\r\n        // while loop to deal a new game until exit is chosen\r\n        while (play) {\r\n\r\n            // set conditions for a new game\r\n            setHit(true);\r\n            dealer.clearHand();\r\n            player.clearPlayerHand();\r\n\r\n            // deal cards to begin game\r\n            Card player1 = dealer.dealACard();\r\n            Card dealer1 = dealer.dealACard();\r\n            Card player2 = dealer.dealACard();\r\n            Card hiddenCard = dealer.dealACard(); //this is the dealers face down card\r\n            player.receiveCard(player1);\r\n            dealer.addACard(dealer1);\r\n            player.receiveCard(player2);\r\n            System.out.println(\"<<Dealer Hand>>\");\r\n            dealer.displayDealerHand();\r\n            System.out.println(\"Dealer Hand: \" + dealer.showHandValue());\r\n\r\n\r\n//            Begins the players turn\r\n//            hit button or stay button\r\n//            will add a card to the players hand on hit and move to dealers turn on stay\r\n//            player hand above 21 also exits loop\r\n\r\n            while (hit && player.getHandValue() <= 21) {\r\n                System.out.println(\"<<Player Hand>>\");\r\n                player.displayPlayerCards();\r\n                System.out.println(\"Hand Value: \" + player.getHandValue());\r\n                System.out.println(\"type Hit (H) to add a card to your hand\");\r\n                String action = playerAction.nextLine();\r\n                if (action.toLowerCase().startsWith(\"h\")) {\r\n                    System.out.println(\"the dealer deals you a new card\");\r\n                    Card newCard = dealer.dealACard();\r\n                    player.receiveCard(newCard);\r\n                } else {\r\n                    System.out.println(\"you decide to stay\");\r\n                    setHit(false);\r\n                }\r\n            }\r\n\r\n//             player loss if hand is bust\r\n\r\n            if (player.getHandValue() > 21) {\r\n                System.out.println(\"your hand is bust, sorry you lose...\");\r\n            }\r\n\r\n//             beginning of the Dealers turn\r\n//             dealer will add a card to its hand until hand value is greater than 17\r\n\r\n            else {\r\n                System.out.println(\"Your final hand value: \" + player.getHandValue());\r\n                System.out.println(\"its now the dealers turn\");\r\n\r\n                dealer.addACard(hiddenCard);  // turns over the dealers hidden card\r\n                System.out.println(\"<<Dealer Hand>>\");\r\n                dealer.displayDealerHand();\r\n                System.out.println(\"Dealer Value: \" + dealer.showHandValue());\r\n\r\n\r\n                while (dealer.showHandValue() < 17) {\r\n\r\n                    System.out.println(\"the dealer draws another card\");\r\n                    dealer.addACard(dealer.dealACard());\r\n                    System.out.println(\"<<Dealer Hand>>\");\r\n                    dealer.displayDealerHand();\r\n                    System.out.println(\"Dealer Value: \" + dealer.showHandValue());\r\n                }\r\n                if (dealer.showHandValue() > 21) {\r\n                    System.out.println(\"dealer hand is bust you win!!!\");\r\n                } else {\r\n                    if (dealer.showHandValue() > player.getHandValue()) {\r\n                        System.out.println(\"The dealer is the winner...\");\r\n                    } else {\r\n                        System.out.println(\"Congratulations you win!!!\");\r\n                    }\r\n                }\r\n            }\r\n\r\n//             this hand is over,\r\n//             continue button, exit button\r\n\r\n            System.out.println(\"type yes (y) to continue...\");\r\n            String playAgain = playerAction.nextLine();\r\n            if (playAgain.toLowerCase().startsWith(\"y\")) {\r\n                System.out.println(\"get ready for the next round!!!\");\r\n            }\r\n            else {\r\n                System.out.println(\"Goodbye, play again soon\");\r\n                setPlay(false);\r\n            }\r\n        }\r\n    }\r\n\r\n    public boolean isPlay() {\r\n        return play;\r\n    }\r\n\r\n    public void setPlay(boolean play) {\r\n        this.play = play;\r\n    }\r\n\r\n    public boolean isHit () {\r\n            return hit;\r\n        }\r\n\r\n        public void setHit ( boolean hit){\r\n            this.hit = hit;\r\n        }\r\n\r\n\r\n        public static void main (String[]args){\r\n            BlackJackGame blackJackGame = new BlackJackGame();\r\n            blackJackGame.playGame();\r\n        }\r\n    }\r\n\r\n\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/BlackJackGame.java b/src/main/java/com/blackjackproject/BlackJackGame.java
++--- a/src/main/java/com/blackjackproject/BlackJackGame.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/BlackJackGame.java	(date 1668544747048)
++@@ -9,31 +9,38 @@
++ 
++ public class BlackJackGame {
++ 
++-    private boolean play = true;
++-    private boolean hit = true;
+++    private boolean play = true;  //set false to end the game
+++    private boolean hit = true;  //set false to end player turn
+++
++     private Scanner playerAction = new Scanner(System.in);
+++
+++    // create dealer and player objects
++     Dealer dealer = new Dealer();
++     Player player = new Player();
++ 
++ 
++ 
++     public void playGame() {
++-        // Suffle deck and deal initial cards
+++        // Shuffle the starting deck
++         dealer.shuffle();
++ 
++-        // while loop to deal a new game until exit is chosen
+++        // while loop, initializes game until play boolean set to false
++         while (play) {
++ 
++             // set conditions for a new game
+++            // clear player and dealer hand
++             setHit(true);
++             dealer.clearHand();
++             player.clearPlayerHand();
++ 
+++
++             // deal cards to begin game
+++            // two cards are dealt to each player
+++            // one dealer card is hidden
++             Card player1 = dealer.dealACard();
++             Card dealer1 = dealer.dealACard();
++             Card player2 = dealer.dealACard();
++-            Card hiddenCard = dealer.dealACard(); //this is the dealers face down card
+++            Card hiddenCard = dealer.dealACard(); //dealers face down card
++             player.receiveCard(player1);
++             dealer.addACard(dealer1);
++             player.receiveCard(player2);
++@@ -42,11 +49,10 @@
++             System.out.println("Dealer Hand: " + dealer.showHandValue());
++ 
++ 
++-//            Begins the players turn
++-//            hit button or stay button
++-//            will add a card to the players hand on hit and move to dealers turn on stay
++-//            player hand above 21 also exits loop
++-
+++            //Begins the players turn
+++            //hit button or stay button
+++            //will add a card to the players hand on hit and move to dealers turn on stay
+++            //player hand above 21 also exits loop
++             while (hit && player.getHandValue() <= 21) {
++                 System.out.println("<<Player Hand>>");
++                 player.displayPlayerCards();
++@@ -63,15 +69,14 @@
++                 }
++             }
++ 
++-//             player loss if hand is bust
++-
+++             //player loss if hand is bust
++             if (player.getHandValue() > 21) {
++                 System.out.println("your hand is bust, sorry you lose...");
++             }
++ 
++-//             beginning of the Dealers turn
++-//             dealer will add a card to its hand until hand value is greater than 17
++-
+++
+++             //beginning of the Dealers turn
+++             //dealer will add a card to its hand until hand value is greater than 17
++             else {
++                 System.out.println("Your final hand value: " + player.getHandValue());
++                 System.out.println("its now the dealers turn");
++@@ -81,7 +86,7 @@
++                 dealer.displayDealerHand();
++                 System.out.println("Dealer Value: " + dealer.showHandValue());
++ 
++-
+++                // dealer will continue to draw until hand > 17
++                 while (dealer.showHandValue() < 17) {
++ 
++                     System.out.println("the dealer draws another card");
++@@ -90,9 +95,13 @@
++                     dealer.displayDealerHand();
++                     System.out.println("Dealer Value: " + dealer.showHandValue());
++                 }
+++                // Dealer loss if hand is bust
++                 if (dealer.showHandValue() > 21) {
++                     System.out.println("dealer hand is bust you win!!!");
++-                } else {
+++                }
+++                // compare dealer hand to Player hand
+++                // if player hand is >= dealer, the player wins
+++                else {
++                     if (dealer.showHandValue() > player.getHandValue()) {
++                         System.out.println("The dealer is the winner...");
++                     } else {
++@@ -101,14 +110,16 @@
++                 }
++             }
++ 
++-//             this hand is over,
++-//             continue button, exit button
++-
+++            //this hand is over,
+++            //continue button, exit button
++             System.out.println("type yes (y) to continue...");
++             String playAgain = playerAction.nextLine();
+++
+++            // Continue
++             if (playAgain.toLowerCase().startsWith("y")) {
++                 System.out.println("get ready for the next round!!!");
++             }
+++            // Exit
++             else {
++                 System.out.println("Goodbye, play again soon");
++                 setPlay(false);
++@@ -116,6 +127,9 @@
++         }
++     }
++ 
+++    // Setters and getters for gameplay logic
+++
+++
++     public boolean isPlay() {
++         return play;
++     }
++Index: src/main/java/com/blackjackproject/cards/Rank.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\npublic enum Rank {\r\n            TWO(2),\r\n            THREE(3),\r\n            FOUR(4),\r\n            FIVE(5),\r\n            SIX(6),\r\n            SEVEN(7),\r\n            EIGHT(8),\r\n            NINE(9),\r\n            TEN(10),\r\n            JACK(10),\r\n            QUEEN(10),\r\n            KING(10),\r\n            ACE(11);\r\n\r\n    private final int value;\r\n\r\n    Rank(int value) {\r\n        this.value = value;\r\n    }\r\n\r\n    public int getValue() {\r\n        return value;\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Rank{\" +\r\n                \"value=\" + value +\r\n                '}';\r\n    }\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Rank.java b/src/main/java/com/blackjackproject/cards/Rank.java
++--- a/src/main/java/com/blackjackproject/cards/Rank.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/cards/Rank.java	(date 1668537581261)
++@@ -27,7 +27,7 @@
++ 
++     @Override
++     public String toString() {
++-        return "Rank{" +
+++        return "Rank{"  +
++                 "value=" + value +
++                 '}';
++     }
++Index: src/main/java/com/blackjackproject/cards/Deck.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\nimport java.util.*;\r\n\r\npublic class Deck {\r\n\r\n    private List<Card> cards = new ArrayList<>();\r\n\r\n\r\n    public Deck() {\r\n        createDeck();\r\n    }\r\n\r\n    private void createDeck(){\r\n\r\n        try {\r\n            for (Suit suits : Suit.values()) {\r\n                for (Rank ranks : Rank.values()) {\r\n                    cards.add(new Card(ranks, suits));\r\n                }\r\n            }\r\n        } catch (NullPointerException e) {\r\n            throw new NullPointerException(\"A deck was not created: \" + e);\r\n        }\r\n\r\n    }\r\n\r\n    public int checkDeckSize(){\r\n        return cards.size();\r\n    }\r\n\r\n    public Card deal(){\r\n\r\n        Card cardTodeal = this.cards.remove(0);\r\n\r\n        return cardTodeal;\r\n    }\r\n\r\n    public void shuffle(){\r\n        Collections.shuffle(this.cards);\r\n    }\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Deck.java b/src/main/java/com/blackjackproject/cards/Deck.java
++--- a/src/main/java/com/blackjackproject/cards/Deck.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/cards/Deck.java	(date 1668545938728)
++@@ -4,15 +4,18 @@
++ 
++ public class Deck {
++ 
+++    // Deck Fields
++     private List<Card> cards = new ArrayList<>();
++ 
++ 
+++    // Deck Constructor
++     public Deck() {
++         createDeck();
++     }
++ 
++-    private void createDeck(){
++ 
+++    // Deck Business Methods
+++    private void createDeck(){                                  // Create a new deck of 52 unique Cards
++         try {
++             for (Suit suits : Suit.values()) {
++                 for (Rank ranks : Rank.values()) {
++@@ -20,23 +23,21 @@
++                 }
++             }
++         } catch (NullPointerException e) {
++-            throw new NullPointerException("A deck was not created: " + e);
+++            throw new NullPointerException
+++                    ("A deck was not created: " + e);
++         }
++-
++     }
++ 
++-    public int checkDeckSize(){
+++    public int checkDeckSize(){                                 // returns the deck size
++         return cards.size();
++     }
++ 
++-    public Card deal(){
++-
+++    public Card deal(){                                         // deal a single card from the deck
++         Card cardTodeal = this.cards.remove(0);
++-
++         return cardTodeal;
++     }
++ 
++-    public void shuffle(){
+++    public void shuffle(){                                      // shuffle the cards in the deck
++         Collections.shuffle(this.cards);
++     }
++ 
++Index: src/main/java/com/blackjackproject/cards/Hand.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic abstract class Hand {\r\n    // Fields\r\n    protected List<Card> cards;\r\n    protected int handValue;\r\n\r\n\r\n    // Constructor\r\n\r\n    public Hand() {\r\n        cards = new ArrayList<>();\r\n    }\r\n\r\n    // Business Methods\r\n    public void addCard(Card card){\r\n        cards.add(card);\r\n        setHandValue(findHandValue());\r\n    }\r\n\r\n    public void displayCards(){\r\n        for (Card card : cards) {\r\n            System.out.println(card.getRank()\r\n                    + \" \" + card.getSuit());\r\n        }\r\n    }\r\n\r\n    public void clear(){\r\n        cards = new ArrayList<>();\r\n    }\r\n\r\n    abstract int findHandValue();\r\n\r\n    // Setters and Getters\r\n    public List<Card> getCards() {\r\n        return cards;\r\n    }\r\n\r\n    public void setCards(List<Card> cards) {\r\n        this.cards = cards;\r\n    }\r\n\r\n    public int getHandValue() {\r\n        return handValue;\r\n    }\r\n\r\n    public void setHandValue(int handValue) {\r\n        this.handValue = handValue;\r\n\r\n    }\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Hand{\" +\r\n                \"cards=\" + cards +\r\n                \", handValue=\" + handValue +\r\n                '}';\r\n    }\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Hand.java b/src/main/java/com/blackjackproject/cards/Hand.java
++--- a/src/main/java/com/blackjackproject/cards/Hand.java	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/src/main/java/com/blackjackproject/cards/Hand.java	(date 1668545938789)
++@@ -4,53 +4,53 @@
++ import java.util.List;
++ 
++ public abstract class Hand {
+++
++     // Fields
++     protected List<Card> cards;
++     protected int handValue;
++ 
++ 
++     // Constructor
++-
++     public Hand() {
++         cards = new ArrayList<>();
++     }
++ 
+++
++     // Business Methods
++-    public void addCard(Card card){
+++    public void addCard(Card card){             // add a card to hand
++         cards.add(card);
++         setHandValue(findHandValue());
++     }
++ 
++-    public void displayCards(){
+++    public void displayCards(){                 // display all cards in hand
++         for (Card card : cards) {
++             System.out.println(card.getRank()
++                     + " " + card.getSuit());
++         }
++     }
++ 
++-    public void clear(){
+++    public void clear(){                        // clears hand
++         cards = new ArrayList<>();
++     }
++ 
++-    abstract int findHandValue();
+++    abstract int findHandValue();               // refer to subclass
+++
++ 
++     // Setters and Getters
++     public List<Card> getCards() {
++         return cards;
++     }
++-
++     public void setCards(List<Card> cards) {
++         this.cards = cards;
++     }
++-
++     public int getHandValue() {
++         return handValue;
++     }
++-
++     public void setHandValue(int handValue) {
++         this.handValue = handValue;
+++    }
++ 
++-    }
+++
++ 
++     @Override
++     public String toString() {
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit3 Test Class\" />\r\n        <option value=\"JUnit4 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"fgr8kn5i\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HIBCwIiGU6vTHYvH71IgmyFPgq\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenPackages\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit4\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3\" value=\"junit.framework.TestCase\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4\" value=\"\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n      <recent name=\"junit.framework.TestCase\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"com.blackjackproject.players\" />\r\n      <recent name=\"com.blackjackproject.cards\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.BlackJackGame\">\r\n    <configuration name=\"BlackJackApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackApplication\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BlackJackGame\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackGame\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.DealerCardReceived\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DealerCardReceived\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.clearDealerCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"clearDealerCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PlayerTest.receiveCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.PlayerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"receiveCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.BlackJackGame\" />\r\n        <item itemvalue=\"Application.BlackJackApplication\" />\r\n        <item itemvalue=\"JUnit.PlayerTest.receiveCard\" />\r\n        <item itemvalue=\"JUnit.DealerTest.DealerCardReceived\" />\r\n        <item itemvalue=\"JUnit.DealerTest.clearDealerCard\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\" />\r\n      <created>1667962595374</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667962595374</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <created>1668443384290</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668443384290</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit player Test\">\r\n      <created>1668447034648</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668447034648</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\">\r\n      <created>1668530941310</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668530941310</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"4\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"commit player Test\" />\r\n    <MESSAGE value=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\" />\r\n  </component>\r\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision 00f0f878c2fdec8da518af3761fcabdd4283b907)
+++++ b/.idea/workspace.xml	(date 1668545939173)
++@@ -4,10 +4,19 @@
++     <option name="autoReloadType" value="SELECTIVE" />
++   </component>
++   <component name="ChangeListManager">
++-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues">
+++    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Layout Changes">
++       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++       <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackGame.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Deck.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Hand.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Rank.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/GUI.class" beforeDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Card.class" afterDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
++@@ -60,7 +69,7 @@
++       <recent name="com.blackjackproject.cards" />
++     </key>
++   </component>
++-  <component name="RunManager" selected="Application.BlackJackGame">
+++  <component name="RunManager" selected="Application.BlackJackApplication">
++     <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
++       <module name="BlackJack" />
++@@ -137,8 +146,8 @@
++     </configuration>
++     <recent_temporary>
++       <list>
++-        <item itemvalue="Application.BlackJackGame" />
++         <item itemvalue="Application.BlackJackApplication" />
+++        <item itemvalue="Application.BlackJackGame" />
++         <item itemvalue="JUnit.PlayerTest.receiveCard" />
++         <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
++         <item itemvalue="JUnit.DealerTest.clearDealerCard" />
++@@ -175,7 +184,14 @@
++       <option name="project" value="LOCAL" />
++       <updated>1668530941310</updated>
++     </task>
++-    <option name="localTasksCounter" value="4" />
+++    <task id="LOCAL-00004" summary="Layout Changes">
+++      <created>1668536958894</created>
+++      <option name="number" value="00004" />
+++      <option name="presentableId" value="LOCAL-00004" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1668536958894</updated>
+++    </task>
+++    <option name="localTasksCounter" value="5" />
++     <servers />
++   </component>
++   <component name="Vcs.Log.Tabs.Properties">
++@@ -194,6 +210,7 @@
++     <MESSAGE value="commit" />
++     <MESSAGE value="commit player Test" />
++     <MESSAGE value="Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues" />
++-    <option name="LAST_COMMIT_MESSAGE" value="Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues" />
+++    <MESSAGE value="Layout Changes" />
+++    <option name="LAST_COMMIT_MESSAGE" value="Layout Changes" />
++   </component>
++ </project>
++\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1668569272869)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/shelved.patch	(date 1668569272869)
+@@ -0,0 +1,118 @@
++Index: src/main/java/com/blackjackproject/players/Dealer.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.players;\r\n\r\nimport com.blackjackproject.cards.BlackJackHand;\r\nimport com.blackjackproject.cards.Card;\r\nimport com.blackjackproject.cards.Deck;\r\n\r\npublic class Dealer {\r\n\r\n    // Dealer Fields\r\n    private BlackJackHand dealerHand;\r\n    private Deck cards;\r\n\r\n    // Dealer constructor\r\n    public Dealer() {\r\n        dealerHand = new BlackJackHand();\r\n        cards = new Deck();\r\n    }\r\n\r\n    // Dealer Business methods\r\n    public Card dealACard(){       // pull a card from the deck\r\n        return cards.deal();\r\n    }\r\n\r\n    public void addACard(Card c){   // add card to dealers hand\r\n        dealerHand.addCard(c);\r\n    }\r\n\r\n    public int showHandValue(){             // calculate dealer hand value\r\n        return dealerHand.findHandValue();\r\n    }\r\n\r\n    public int remainingCards(){        //\r\n        return cards.checkDeckSize();\r\n    }\r\n\r\n    public void shuffle(){\r\n        cards.shuffle();\r\n    }\r\n\r\n    public void clearHand(){\r\n        dealerHand.clear();\r\n    }\r\n\r\n    public void displayDealerHand() {\r\n        dealerHand.displayCards();\r\n    }\r\n\r\n    public void dealersTurn(){\r\n\r\n        while (dealerHand.findHandValue() < 17){\r\n            addACard(dealACard());\r\n        }\r\n    }\r\n\r\n\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/players/Dealer.java b/src/main/java/com/blackjackproject/players/Dealer.java
++--- a/src/main/java/com/blackjackproject/players/Dealer.java	(revision f32e9f67616a2a5a05990c673e45e9264ed56310)
+++++ b/src/main/java/com/blackjackproject/players/Dealer.java	(date 1668566172656)
++@@ -41,8 +41,7 @@
++         dealerHand.clear();
++     }
++ 
++-    public void displayDealerHand() {
++-        dealerHand.displayCards();
+++    public void displayDealerHand() {v
++     }
++ 
++     public void dealersTurn(){
++Index: src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.gui;\r\n\r\nimport com.blackjackproject.players.Dealer;\r\nimport com.blackjackproject.players.Player;\r\n\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.ActionEvent;\r\nimport java.awt.event.ActionListener;\r\n\r\npublic class BlackJackGUILogic {\r\n\r\n    private static JFrame frame = new BlackJackGUI();\r\n\r\n    // card panels\r\n    private CardPanels dealerPanel;\r\n    private CardPanels playerPanel;\r\n\r\n    //buttons\r\n    private JButton newGame;\r\n    private JButton endGame;\r\n    private JButton hitButton;\r\n    private JButton standButton;\r\n    private JButton dealButton;\r\n    private JButton continueButton;\r\n\r\n    // object\r\n    private Dealer dealer;\r\n    private Player player;\r\n\r\n    //labels for board\r\n    private JLabel labelPlayer;\r\n    private JLabel labelDealer;\r\n\r\n\r\n    public void intiGui(){\r\n        newGame = new JButton(\"New Game\");\r\n\r\n        newGame.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                startGame();\r\n            }\r\n        });\r\n        newGame.setBounds(20,610,99,50);\r\n        frame.getContentPane().add(newGame);\r\n\r\n        // End Game\r\n        endGame = new JButton(\"End Game\");\r\n        endGame.setEnabled(false);\r\n        endGame.setBounds(121,610,99,50);\r\n        endGame.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                frame.getContentPane().removeAll();\r\n                frame.repaint();\r\n                intiGui();\r\n            }\r\n        });\r\n        frame.getContentPane().add(endGame);\r\n\r\n    }\r\n\r\n\r\n    public void  deal(){\r\n\r\n        dealButton.setEnabled(false);\r\n\r\n        labelDealer = new JLabel(\"Dealer\");\r\n        labelDealer.setForeground(Color.WHITE);\r\n        labelDealer.setFont(new Font(\"Arial Black\",Font.BOLD, 20));\r\n        labelDealer.setBounds(415,158,82,28);\r\n        frame.getContentPane().add(labelDealer);\r\n\r\n        labelPlayer = new JLabel(\"Player\");\r\n        labelPlayer.setForeground(Color.WHITE);\r\n        labelPlayer.setFont(new Font(\"Arial Black\", Font.BOLD,20));\r\n        labelPlayer.setBounds(415,266,82,28);\r\n        frame.getContentPane().add(labelPlayer);\r\n\r\n\r\n\r\n        hitButton = new JButton(\"Hit!\");\r\n\r\n        hitButton.setBounds(290,515,140,35);\r\n        hitButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                hit();\r\n            }\r\n        });\r\n        frame.getContentPane().add(hitButton);\r\n        hitButton.requestFocus();\r\n\r\n        standButton = new JButton(\"Stand\");\r\n        standButton.setBounds(470,515,140,35);\r\n        standButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                stand();\r\n            }\r\n        });\r\n\r\n        //TODO finish\r\n        frame.getContentPane().add(standButton);\r\n\r\n        continueButton = new JButton(\"Continue\");\r\n        continueButton.setEnabled(false);\r\n        continueButton.setVisible(false);\r\n        continueButton.setBounds(290,444,320,35);\r\n        continueButton.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                //TODO FIND CONTINUE;\r\n            }\r\n        });\r\n\r\n        frame.getContentPane().add(continueButton);\r\n        frame.repaint();\r\n        //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN\r\n\r\n\r\n        updateCardsOnTable();\r\n        testWinCondition();\r\n\r\n\r\n    }\r\n\r\n    private void hit(){\r\n        player.receiveCard(dealer.dealACard());\r\n        updateCardsOnTable();\r\n\r\n    }\r\n\r\n    private boolean testWinCondition(){\r\n\r\n        //TODO TEST BASIC WIN CODITION\r\n        return false;\r\n\r\n    }\r\n\r\n    private void stand(){\r\n\r\n        if(testWinCondition()){\r\n            return;\r\n        }\r\n        int playerScore = player.getHandValue();\r\n        int dealerScore = dealer.showHandValue();\r\n\r\n        // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION\r\n\r\n\r\n\r\n        updateCardsOnTable();\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n    private void updateCardsOnTable(){\r\n        if(dealerPanel != null){\r\n            frame.getContentPane().remove(dealerPanel);\r\n            frame.getContentPane().remove(playerPanel);\r\n        }\r\n\r\n        dealerPanel = new CardPanels(dealer.getDealerHand(),420 -(dealer.getDealerHandCount() * 40),50,70,104,10);\r\n        frame.getContentPane().add(dealerPanel);\r\n\r\n        playerPanel = new CardPanels(player.getPlayerHand(),420 -(player.playerHandCount() * 40),300,70,104,10);\r\n        frame.getContentPane().add(playerPanel);\r\n        frame.repaint();\r\n    }\r\n\r\n\r\n    public void startGame(){\r\n        newGame.setEnabled(false);\r\n\r\n        player =new Player();\r\n\r\n        dealer = new Dealer();\r\n        dealer.shuffle();\r\n\r\n\r\n    }\r\n\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java b/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java
++--- a/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java	(revision f32e9f67616a2a5a05990c673e45e9264ed56310)
+++++ b/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java	(date 1668553451042)
++@@ -8,7 +8,7 @@
++ import java.awt.event.ActionEvent;
++ import java.awt.event.ActionListener;
++ 
++-public class BlackJackGUILogic {
+++public class   BlackJackGUILogic {
++ 
++     private static JFrame frame = new BlackJackGUI();
++ 
++Index: src/main/java/com/blackjackproject/cards/Card.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\npublic class Card {\r\n\r\n    // Card Fields\r\n    private Rank rank;\r\n    private Suit suit;\r\n\r\n\r\n    // Card Constructors\r\n    public Card(Rank rank, Suit suit) {\r\n        this.rank = rank;\r\n        this.suit = suit;\r\n    }\r\n\r\n\r\n    // Card Setters and Getters\r\n    public int getValue() {\r\n        return rank.getValue();\r\n    }\r\n\r\n    public Rank getRank() {\r\n        return rank;\r\n    }\r\n\r\n    public void setRank(Rank rank) {\r\n        this.rank = rank;\r\n    }\r\n\r\n    public Suit getSuit() {\r\n        return suit;\r\n    }\r\n\r\n    public void setSuit(Suit suit) {\r\n        this.suit = suit;\r\n    }\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Card{\" +\r\n                \"rank=\" + rank +\r\n                \", suit=\" + suit +\r\n                '}';\r\n    }\r\n\r\n    public String getImgFile() {\r\n\r\n        if(getValue() == 0){\r\n            return \"\" ;//TODO BACK OF CARD IMG\r\n        }\r\n\r\n        return String.format(\"\", this.rank,this.suit);\r\n    }\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Card.java b/src/main/java/com/blackjackproject/cards/Card.java
++--- a/src/main/java/com/blackjackproject/cards/Card.java	(revision f32e9f67616a2a5a05990c673e45e9264ed56310)
+++++ b/src/main/java/com/blackjackproject/cards/Card.java	(date 1668552082369)
++@@ -18,19 +18,15 @@
++     public int getValue() {
++         return rank.getValue();
++     }
++-
++     public Rank getRank() {
++         return rank;
++     }
++-
++     public void setRank(Rank rank) {
++         this.rank = rank;
++     }
++-
++     public Suit getSuit() {
++         return suit;
++     }
++-
++     public void setSuit(Suit suit) {
++         this.suit = suit;
++     }
++@@ -45,11 +41,9 @@
++     }
++ 
++     public String getImgFile() {
++-
++         if(getValue() == 0){
++             return "" ;//TODO BACK OF CARD IMG
++         }
++-
++         return String.format("", this.rank,this.suit);
++     }
++ }
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"commit player Test\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_1_18_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_1_18_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_3_40_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_3_40_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_5_49_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_5_49_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit3 Test Class\" />\r\n        <option value=\"JUnit4 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"fgr8kn5i\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HIBCwIiGU6vTHYvH71IgmyFPgq\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenPackages\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit4\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3\" value=\"junit.framework.TestCase\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4\" value=\"\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n      <recent name=\"junit.framework.TestCase\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"com.blackjackproject.players\" />\r\n      <recent name=\"com.blackjackproject.cards\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.BlackJackGame\">\r\n    <configuration name=\"BlackJackApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackApplication\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BlackJackGame\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackGame\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.DealerCardReceived\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DealerCardReceived\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.clearDealerCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"clearDealerCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PlayerTest.receiveCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.PlayerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"receiveCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.BlackJackGame\" />\r\n        <item itemvalue=\"Application.BlackJackApplication\" />\r\n        <item itemvalue=\"JUnit.PlayerTest.receiveCard\" />\r\n        <item itemvalue=\"JUnit.DealerTest.DealerCardReceived\" />\r\n        <item itemvalue=\"JUnit.DealerTest.clearDealerCard\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\" />\r\n      <created>1667962595374</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667962595374</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <created>1668443384290</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668443384290</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit player Test\">\r\n      <created>1668447034648</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668447034648</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\">\r\n      <created>1668530941310</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668530941310</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Layout Changes&#10;- added notes to several classes\">\r\n      <created>1668547288559</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668547288559</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"commit player Test\" />\r\n    <MESSAGE value=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\" />\r\n    <MESSAGE value=\"Layout Changes&#10;- added notes to several classes\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Layout Changes&#10;- added notes to several classes\" />\r\n  </component>\r\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision f32e9f67616a2a5a05990c673e45e9264ed56310)
+++++ b/.idea/workspace.xml	(date 1668566049686)
++@@ -4,13 +4,20 @@
++     <option name="autoReloadType" value="SELECTIVE" />
++   </component>
++   <component name="ChangeListManager">
++-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
++-      <change afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_1_18_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_1_18_PM__Changes_.xml" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_3_40_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_3_40_PM__Changes_.xml" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_5_49_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_14_2022_5_49_PM__Changes_.xml" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_4_00_PM__Changes_.xml" afterDir="false" />
+++    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Layout Changes&#10;- added notes to several classes">
++       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" beforeDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Card.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Deck.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" beforeDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class" beforeDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1668569272878)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/shelved.patch	(date 1668569272878)
+@@ -0,0 +1,111 @@
++Index: src/main/java/com/blackjackproject/players/Player.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.players;\r\n\r\nimport com.blackjackproject.cards.BlackJackHand;\r\nimport com.blackjackproject.cards.Card;\r\n\r\npublic class Player {\r\n\r\n\r\n    // Player Fields\r\n    private BlackJackHand playerHand;\r\n\r\n\r\n    // Player Constructor\r\n    public Player() {\r\n        playerHand = new BlackJackHand();  // Creates new blackjack hand attached to player\r\n    }\r\n\r\n\r\n    // Player Business Methods\r\n\r\n    public void receiveCard(Card c){        // add card to PLayer Hand\r\n        playerHand.addCard(c);\r\n    }\r\n\r\n    public BlackJackHand getPlayerHand() {  // returns the players whole hand\r\n        return playerHand;\r\n    }\r\n\r\n    public int getHandValue(){              // Calculate player hand value\r\n        return playerHand.getHandValue();\r\n    }\r\n\r\n    public void clearPlayerHand(){          // Clear player hand\r\n        playerHand.clear();\r\n    }\r\n\r\n    public void displayPlayerCards() {      // Display all cards in player hand by rank and suit\r\n        playerHand.displayCards();\r\n    }\r\n\r\n\r\n\r\n}\r\n\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/players/Player.java b/src/main/java/com/blackjackproject/players/Player.java
++--- a/src/main/java/com/blackjackproject/players/Player.java	(revision 0853d084fab3ce199f86eaa0be7e5040e42b8e5e)
+++++ b/src/main/java/com/blackjackproject/players/Player.java	(date 1668551955819)
++@@ -15,6 +15,7 @@
++         playerHand = new BlackJackHand();  // Creates new blackjack hand attached to player
++     }
++ 
+++    .0
++ 
++     // Player Business Methods
++ 
++Index: src/main/java/com/blackjackproject/cards/Card.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\npublic class Card {\r\n\r\n    // Card Fields\r\n    private Rank rank;\r\n    private Suit suit;\r\n\r\n\r\n    // Card Constructors\r\n    public Card(Rank rank, Suit suit) {\r\n        this.rank = rank;\r\n        this.suit = suit;\r\n    }\r\n\r\n\r\n    // Card Setters and Getters\r\n    public int getValue() {\r\n        return rank.getValue();\r\n    }\r\n\r\n    public Rank getRank() {\r\n        return rank;\r\n    }\r\n\r\n    public void setRank(Rank rank) {\r\n        this.rank = rank;\r\n    }\r\n\r\n    public Suit getSuit() {\r\n        return suit;\r\n    }\r\n\r\n    public void setSuit(Suit suit) {\r\n        this.suit = suit;\r\n    }\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Card{\" +\r\n                \"rank=\" + rank +\r\n                \", suit=\" + suit +\r\n                '}';\r\n    }\r\n\r\n    public String getImgFile() {\r\n\r\n        if(getValue() == 0){\r\n            return \"\" ;//TODO BACK OF CARD IMG\r\n        }\r\n\r\n        return String.format(\"\", this.rank,this.suit);\r\n    }\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Card.java b/src/main/java/com/blackjackproject/cards/Card.java
++--- a/src/main/java/com/blackjackproject/cards/Card.java	(revision 0853d084fab3ce199f86eaa0be7e5040e42b8e5e)
+++++ b/src/main/java/com/blackjackproject/cards/Card.java	(date 1668548185431)
++@@ -18,19 +18,15 @@
++     public int getValue() {
++         return rank.getValue();
++     }
++-
++     public Rank getRank() {
++         return rank;
++     }
++-
++     public void setRank(Rank rank) {
++         this.rank = rank;
++     }
++-
++     public Suit getSuit() {
++         return suit;
++     }
++-
++     public void setSuit(Suit suit) {
++         this.suit = suit;
++     }
++@@ -45,11 +41,9 @@
++     }
++ 
++     public String getImgFile() {
++-
++         if(getValue() == 0){
++             return "" ;//TODO BACK OF CARD IMG
++         }
++-
++         return String.format("", this.rank,this.suit);
++     }
++ }
++Index: .idea/workspace.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"Layout Changes&#10;- added notes to several classes\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Deck.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Deck.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Hand.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Hand.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JUnit3 Test Class\" />\r\n        <option value=\"JUnit4 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"fgr8kn5i\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2HIBCwIiGU6vTHYvH71IgmyFPgq\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"flattenPackages\" value=\"true\" />\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary\" value=\"JUnit4\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3\" value=\"junit.framework.TestCase\" />\r\n    <property name=\"com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4\" value=\"\" />\r\n    <property name=\"dart.analysis.tool.window.visible\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n      <recent name=\"junit.framework.TestCase\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"com.blackjackproject.players\" />\r\n      <recent name=\"com.blackjackproject.cards\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.BlackJackGame\">\r\n    <configuration name=\"BlackJackApplication\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackApplication\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"BlackJackGame\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.BlackJackGame\" />\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.DealerCardReceived\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"DealerCardReceived\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DealerTest.clearDealerCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.DealerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"clearDealerCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"PlayerTest.receiveCard\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"BlackJack\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.blackjackproject.players.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"com.blackjackproject.players\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.blackjackproject.players.PlayerTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"receiveCard\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.BlackJackGame\" />\r\n        <item itemvalue=\"Application.BlackJackApplication\" />\r\n        <item itemvalue=\"JUnit.PlayerTest.receiveCard\" />\r\n        <item itemvalue=\"JUnit.DealerTest.DealerCardReceived\" />\r\n        <item itemvalue=\"JUnit.DealerTest.clearDealerCard\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e04aaddf-94e7-4ba1-a597-90b0547e268d\" name=\"Changes\" comment=\"\" />\r\n      <created>1667962595374</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1667962595374</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"commit\">\r\n      <created>1668443384290</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668443384290</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"commit player Test\">\r\n      <created>1668447034648</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668447034648</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\">\r\n      <created>1668530941310</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668530941310</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Layout Changes&#10;- added notes to several classes\">\r\n      <created>1668547288559</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1668547288559</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"commit\" />\r\n    <MESSAGE value=\"commit player Test\" />\r\n    <MESSAGE value=\"Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues\" />\r\n    <MESSAGE value=\"Layout Changes&#10;- added notes to several classes\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Layout Changes&#10;- added notes to several classes\" />\r\n  </component>\r\n</project>
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/.idea/workspace.xml b/.idea/workspace.xml
++--- a/.idea/workspace.xml	(revision 0853d084fab3ce199f86eaa0be7e5040e42b8e5e)
+++++ b/.idea/workspace.xml	(date 1668551955838)
++@@ -6,16 +6,17 @@
++   <component name="ChangeListManager">
++     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Layout Changes&#10;- added notes to several classes">
++       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" afterDir="false" />
++       <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Deck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Deck.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Hand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Hand.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
++       <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Player.java" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackGame.class" beforeDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/BlackJackHand.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Card.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Deck.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Deck.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" beforeDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class" beforeDir="false" />
++       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
++-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" afterDir="false" />
+++      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" />
++     </list>
++     <option name="SHOW_DIALOG" value="false" />
++     <option name="HIGHLIGHT_CONFLICTS" value="true" />
++@@ -190,7 +191,14 @@
++       <option name="project" value="LOCAL" />
++       <updated>1668547288559</updated>
++     </task>
++-    <option name="localTasksCounter" value="5" />
+++    <task id="LOCAL-00005" summary="Layout Changes&#10;- added notes to several classes">
+++      <created>1668547971579</created>
+++      <option name="number" value="00005" />
+++      <option name="presentableId" value="LOCAL-00005" />
+++      <option name="project" value="LOCAL" />
+++      <updated>1668547971579</updated>
+++    </task>
+++    <option name="localTasksCounter" value="6" />
++     <servers />
++   </component>
++   <component name="Vcs.Log.Tabs.Properties">
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1668569290672)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM__Changes_.xml	(date 1668569290672)
+@@ -0,0 +1,49 @@
++<changelist name="Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]" date="1668551976992" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/15/2022 5:39 PM [Changes]" />
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/BlackJackGame.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Player.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Hand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/BlackJackHand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Card.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Dealer.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_39_PM_[Changes]/Deck.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1668569290663)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM__Changes_.xml	(date 1668569290663)
+@@ -0,0 +1,49 @@
++<changelist name="Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]" date="1668566239306" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/15/2022 9:36 PM [Changes]" />
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Player.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/BlackJackHand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Card.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Dealer.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Deck.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/BlackJackGame.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_9_36_PM_[Changes]/Hand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/shelved.patch
+new file mode 100644
+--- /dev/null	(date 1668569272900)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/shelved.patch	(date 1668569272900)
+@@ -0,0 +1,60 @@
++Index: src/main/java/com/blackjackproject/players/Player.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.players;\r\n\r\nimport com.blackjackproject.cards.BlackJackHand;\r\nimport com.blackjackproject.cards.Card;\r\n\r\npublic class Player {\r\n\r\n\r\n    // Player Fields\r\n    private BlackJackHand playerHand;\r\n\r\n\r\n    // Player Constructor\r\n    public Player() {\r\n        playerHand = new BlackJackHand();  // Creates new blackjack hand attached to player\r\n    }\r\n\r\n\r\n    // Player Business Methods\r\n\r\n    public void receiveCard(Card c){        // add card to PLayer Hand\r\n        playerHand.addCard(c);\r\n    }\r\n\r\n    public BlackJackHand getPlayerHand() {  // returns the players whole hand\r\n        return playerHand;\r\n    }\r\n\r\n    public int getHandValue(){              // Calculate player hand value\r\n        return playerHand.getHandValue();\r\n    }\r\n\r\n    public void clearPlayerHand(){          // Clear player hand\r\n        playerHand.clear();\r\n    }\r\n\r\n    public void displayPlayerCards() {      // Display all cards in player hand by rank and suit\r\n        playerHand.displayCards();\r\n    }\r\n\r\n\r\n\r\n}\r\n\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/players/Player.java b/src/main/java/com/blackjackproject/players/Player.java
++--- a/src/main/java/com/blackjackproject/players/Player.java	(revision b3119fa2fbf267fe2cc5126e4b3b17e9843d23d8)
+++++ b/src/main/java/com/blackjackproject/players/Player.java	(date 1668551958784)
++@@ -15,6 +15,7 @@
++         playerHand = new BlackJackHand();  // Creates new blackjack hand attached to player
++     }
++ 
+++    .0
++ 
++     // Player Business Methods
++ 
++Index: src/main/java/com/blackjackproject/cards/Card.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
++<+>package com.blackjackproject.cards;\r\n\r\npublic class Card {\r\n\r\n    // Card Fields\r\n    private Rank rank;\r\n    private Suit suit;\r\n\r\n\r\n    // Card Constructors\r\n    public Card(Rank rank, Suit suit) {\r\n        this.rank = rank;\r\n        this.suit = suit;\r\n    }\r\n\r\n\r\n    // Card Setters and Getters\r\n    public int getValue() {\r\n        return rank.getValue();\r\n    }\r\n\r\n    public Rank getRank() {\r\n        return rank;\r\n    }\r\n\r\n    public void setRank(Rank rank) {\r\n        this.rank = rank;\r\n    }\r\n\r\n    public Suit getSuit() {\r\n        return suit;\r\n    }\r\n\r\n    public void setSuit(Suit suit) {\r\n        this.suit = suit;\r\n    }\r\n\r\n\r\n    @Override\r\n    public String toString() {\r\n        return \"Card{\" +\r\n                \"rank=\" + rank +\r\n                \", suit=\" + suit +\r\n                '}';\r\n    }\r\n\r\n    public String getImgFile() {\r\n\r\n        if(getValue() == 0){\r\n            return \"\" ;//TODO BACK OF CARD IMG\r\n        }\r\n\r\n        return String.format(\"\", this.rank,this.suit);\r\n    }\r\n}\r\n
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++diff --git a/src/main/java/com/blackjackproject/cards/Card.java b/src/main/java/com/blackjackproject/cards/Card.java
++--- a/src/main/java/com/blackjackproject/cards/Card.java	(revision b3119fa2fbf267fe2cc5126e4b3b17e9843d23d8)
+++++ b/src/main/java/com/blackjackproject/cards/Card.java	(date 1668551958794)
++@@ -18,19 +18,15 @@
++     public int getValue() {
++         return rank.getValue();
++     }
++-
++     public Rank getRank() {
++         return rank;
++     }
++-
++     public void setRank(Rank rank) {
++         this.rank = rank;
++     }
++-
++     public Suit getSuit() {
++         return suit;
++     }
++-
++     public void setSuit(Suit suit) {
++         this.suit = suit;
++     }
++@@ -45,11 +41,9 @@
++     }
++ 
++     public String getImgFile() {
++-
++         if(getValue() == 0){
++             return "" ;//TODO BACK OF CARD IMG
++         }
++-
++         return String.format("", this.rank,this.suit);
++     }
++ }
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM__Changes_.xml
+new file mode 100644
+--- /dev/null	(date 1668569290681)
++++ b/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM__Changes_.xml	(date 1668569290681)
+@@ -0,0 +1,49 @@
++<changelist name="Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]" date="1668552082517" recycled="true" deleted="true">
++  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/shelved.patch" />
++  <option name="DESCRIPTION" value="Uncommitted changes before Update at 11/15/2022 5:41 PM [Changes]" />
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/BlackJackGame.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Player.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Hand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Hand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/BlackJackHand.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/BlackJackHand.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Card.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Card.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/players/Dealer.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Dealer.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="AFTER_PATH" value="target/classes/com/blackjackproject/cards/Deck.class" />
++    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_15_2022_5_41_PM_[Changes]/Deck.class" />
++  </binary>
++  <binary>
++    <option name="BEFORE_PATH" value="target/classes/com/blackjackproject/gui/BlackJackLogic.class" />
++    <option name="AFTER_PATH" />
++    <option name="SHELVED_PATH" />
++  </binary>
++</changelist>
+\ No newline at end of file
