@@ -1,6 +1,8 @@
 package com.blackjackproject;
 
 
+import com.blackjackproject.gui.BlackJackGUI;
+
 public class BlackJackApplication implements Runnable {
 
 

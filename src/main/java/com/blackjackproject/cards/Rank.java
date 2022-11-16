@@ -27,9 +27,7 @@ public enum Rank {
 
     @Override
     public String toString() {
-        return "Rank{" +
-                "value=" + value +
-                '}';
+        return ""+this.value;
     }
 
 }

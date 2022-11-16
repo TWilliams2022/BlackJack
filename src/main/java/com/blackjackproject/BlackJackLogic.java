@@ -19,7 +19,7 @@ public class BlackJackLogic {
         player.receiveCard(dealer.dealACard());
 
         // Deal A face Down Card and One Face
-        dealer.addACard(new Card(Rank.valueOf("0"), Suit.valueOf("")));
+
         dealer.addACard(dealer.dealACard());
 
     }

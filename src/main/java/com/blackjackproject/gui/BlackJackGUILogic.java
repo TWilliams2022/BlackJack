@@ -37,7 +37,7 @@ public class BlackJackGUILogic {
     public void intiGui(){
         newGame = new JButton("New Game");
 
-        newGame.addActionListener(new ActionListener() {
+        newGame.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 startGame();
@@ -166,10 +166,10 @@ public class BlackJackGUILogic {
             frame.getContentPane().remove(playerPanel);
         }
 
-        dealerPanel = new CardPanels(dealer.getDealerHand(),420 -(dealer.getDealerHandCount() * 40),50,70,104,10);
+        dealerPanel = new CardPanels(dealer.getDealerHand(),420 - (dealer.getDealerHandCount() * 40),50,70,104,10);
         frame.getContentPane().add(dealerPanel);
 
-        playerPanel = new CardPanels(player.getPlayerHand(),420 -(player.playerHandCount() * 40),300,70,104,10);
+        playerPanel = new CardPanels(player.getPlayerHand(),420 - (player.playerHandCount() * 40),300,70,104,10);
         frame.getContentPane().add(playerPanel);
         frame.repaint();
     }
@@ -177,13 +177,33 @@ public class BlackJackGUILogic {
 
     public void startGame(){
         newGame.setEnabled(false);
-
         player =new Player();
-
         dealer = new Dealer();
         dealer.shuffle();
+
+        dealButton = new JButton("Deal");
+
+        dealButton.setBounds(679,610,200,50);
+        dealButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deal();
+            }
+        });
+        frame.getContentPane().add(dealButton);
+        dealButton.requestFocus();
+        frame.repaint();
 
 
     }
 
+    public static void main(String[] args) {
+        BlackJackGUILogic h = new BlackJackGUILogic();
+        h.intiGui();
+        frame.setVisible(true);
+    }
+
+
+
 }
+

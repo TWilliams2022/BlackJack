@@ -1,7 +1,7 @@
 package com.blackjackproject.cards;
 
 public enum Suit {
-    Diamond("Diamond"),
+    Diamond("Diamonds"),
     Clubs("Clubs"),
     Spades("Spades"),
     Hearts("Hearts");
@@ -14,9 +14,7 @@ public enum Suit {
 
     @Override
     public String toString() {
-        return "Suit{" +
-                "name='" + name + '\'' +
-                '}';
+        return ""+ this.name;
     }
 }
 
