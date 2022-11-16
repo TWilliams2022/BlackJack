@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/TestCondition/TestCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,20 +61,7 @@
       <recent name="com.blackjackproject.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BlackJackGUILogic">
-    <configuration name="BlackJackApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackApplication" />
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestCondition.dealerWinCondition">
     <configuration name="BlackJackGUILogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.blackjackproject.gui.BlackJackGUILogic" />
       <module name="BlackJack" />
@@ -85,46 +75,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackGame" />
+    <configuration name="TestCondition.dealerBustCondition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlackJack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.blackjackproject.*" />
+          <option name="PATTERN" value="TestCondition.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DealerTest.DealerCardReceived" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="BlackJack" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.blackjackproject.players.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.DealerTest" />
-      <option name="METHOD_NAME" value="DealerCardReceived" />
+      <option name="PACKAGE_NAME" value="TestCondition" />
+      <option name="MAIN_CLASS_NAME" value="TestCondition.TestCondition" />
+      <option name="METHOD_NAME" value="dealerBustCondition" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PlayerTest.receiveCard" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestCondition.dealerWinCondition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="BlackJack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.blackjackproject.players.*" />
+          <option name="PATTERN" value="TestCondition.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.blackjackproject.players" />
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.players.PlayerTest" />
-      <option name="METHOD_NAME" value="receiveCard" />
+      <option name="PACKAGE_NAME" value="TestCondition" />
+      <option name="MAIN_CLASS_NAME" value="TestCondition.TestCondition" />
+      <option name="METHOD_NAME" value="dealerWinCondition" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCondition.playerBustCondition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestCondition.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="TestCondition" />
+      <option name="MAIN_CLASS_NAME" value="TestCondition.TestCondition" />
+      <option name="METHOD_NAME" value="playerBustCondition" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestCondition.playerWinCondition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="BlackJack" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestCondition.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="TestCondition" />
+      <option name="MAIN_CLASS_NAME" value="TestCondition.TestCondition" />
+      <option name="METHOD_NAME" value="playerWinCondition" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestCondition.dealerWinCondition" />
+        <item itemvalue="JUnit.TestCondition.dealerBustCondition" />
+        <item itemvalue="JUnit.TestCondition.playerWinCondition" />
+        <item itemvalue="JUnit.TestCondition.playerBustCondition" />
         <item itemvalue="Application.BlackJackGUILogic" />
-        <item itemvalue="Application.BlackJackGame" />
-        <item itemvalue="Application.BlackJackApplication" />
-        <item itemvalue="JUnit.PlayerTest.receiveCard" />
-        <item itemvalue="JUnit.DealerTest.DealerCardReceived" />
       </list>
     </recent_temporary>
   </component>
@@ -198,5 +207,19 @@
     <MESSAGE value="Made changes to the game logic&#10;-fix player abilty to hit past 21&#10;-add game continuation logic&#10;- fix design issues" />
     <MESSAGE value="Layout Changes&#10;- added notes to several classes" />
     <option name="LAST_COMMIT_MESSAGE" value="Layout Changes&#10;- added notes to several classes" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/test/TestCondition/TestCondition.java</url>
+          <line>39</line>
+          <properties class="TestCondition.TestCondition" method="playerBustCondition">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
