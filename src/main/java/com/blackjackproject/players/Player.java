@@ -27,7 +27,7 @@ public class Player {
     }
 
     public int getHandValue(){              // Calculate player hand value
-        return playerHand.getHandValue();
+        return playerHand.findHandValue();
     }
 
     public void clearPlayerHand(){          // Clear player hand

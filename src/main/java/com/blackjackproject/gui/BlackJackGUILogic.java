@@ -131,14 +131,36 @@ public class BlackJackGUILogic {
     private void hit(){
         player.receiveCard(dealer.dealACard());
         updateCardsOnTable();
+        testBustCondition();
+        testDealerBustCondition();
+    }
 
+    public boolean testBustCondition() {
+        if (player.getHandValue() > 21 || dealer.showHandValue() > 21) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public boolean testDealerBustCondition() {
+        if (dealer.showHandValue() > 21) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     private boolean testWinCondition(){
-
-        //TODO TEST BASIC WIN CODITION
-        return false;
-
+        boolean result = false;
+        if (dealer.showHandValue() >= player.getHandValue()) {
+            result = true;
+        }
+        else {
+            result = false;
+        }
+        return result;
     }
 
     private void stand(){
