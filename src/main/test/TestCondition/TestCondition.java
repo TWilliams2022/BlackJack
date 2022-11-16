@@ -8,7 +8,7 @@ import com.blackjackproject.players.Player;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class TestCondition {
 
@@ -20,8 +20,8 @@ public class TestCondition {
     private Card nineDiamonds;
 
 
-    private Player player;
-    private Dealer dealer;
+    private Player player1;
+    private Dealer dealer1;
 
     @Before
     public void setUp() throws Exception {
@@ -31,39 +31,49 @@ public class TestCondition {
         sevenDiamonds = new Card(Rank.SEVEN, Suit.Diamond);
         eightDiamonds = new Card(Rank.EIGHT, Suit.Diamond);
         nineDiamonds = new Card(Rank.NINE, Suit.Diamond);
-
-        player = new Player();
-        dealer = new Dealer();
+        player1 = new Player();
+        dealer1 = new Dealer();
     }
 
     @Test
     public void playerBustCondition() {
-        player.receiveCard(kingDiamonds);
-        player.receiveCard(queenDiamonds);
-        player.receiveCard(twoDiamonds);
-        assertEquals(22, player.getPlayerHand().findHandValue());
+
+        player1.receiveCard(kingDiamonds);
+        player1.receiveCard(queenDiamonds);
+        player1.receiveCard(twoDiamonds);
+        dealer1.addACard(kingDiamonds);
+        dealer1.addACard(nineDiamonds);
+        dealer1.addACard(twoDiamonds);
+        assertTrue("Player Bust: 22 or more!", player1.getPlayerHand().findHandValue() > dealer1.getDealerHand().findHandValue());
     }
 
     @Test
     public void dealerBustCondition() {
-        dealer.addACard(kingDiamonds);
-        dealer.addACard(queenDiamonds);
-        dealer.addACard(twoDiamonds);
-        assertEquals(22, dealer.getDealerHand().findHandValue());
+
+        dealer1.addACard(kingDiamonds);
+        dealer1.addACard(queenDiamonds);
+        dealer1.addACard(twoDiamonds);
+        player1.receiveCard(kingDiamonds);
+        player1.receiveCard(nineDiamonds);
+        player1.receiveCard(twoDiamonds);
+        assertTrue("Dealer Bust: 22 or more!", player1.getPlayerHand().findHandValue() < dealer1.getDealerHand().findHandValue());
     }
 
     @Test
     public void playerWinCondition() {
-        player.receiveCard(queenDiamonds);
-        player.receiveCard(nineDiamonds);
-        player.receiveCard(twoDiamonds);
-        assertEquals(21,player.getPlayerHand().findHandValue());
+        player1.receiveCard(queenDiamonds);
+        player1.receiveCard(nineDiamonds);
+        dealer1.addACard(queenDiamonds);
+        dealer1.addACard(twoDiamonds);
+        assertTrue("player wins",player1.getPlayerHand().findHandValue() >= dealer1.getDealerHand().findHandValue());
     }
     @Test
     public void dealerWinCondition() {
-        dealer.addACard(nineDiamonds);
-        dealer.addACard(queenDiamonds);
-        dealer.addACard(twoDiamonds);
-        assertEquals(21, dealer.getDealerHand().findHandValue());
+        dealer1.addACard(nineDiamonds);
+        dealer1.addACard(queenDiamonds);
+        dealer1.addACard(twoDiamonds);
+        player1.receiveCard(queenDiamonds);
+        player1.receiveCard(nineDiamonds);
+        assertTrue("Dealer wins",dealer1.getDealerHand().findHandValue() >= player1.getPlayerHand().findHandValue());
     }
 }
