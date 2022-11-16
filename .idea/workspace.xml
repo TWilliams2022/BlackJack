@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Rank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/players/Dealer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/TestCondition/TestCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/TestCondition/TestCondition.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/TestCondition/TestCondition.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/TestCondition/TestCondition.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,13 +62,13 @@
       <recent name="com.blackjackproject.cards" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.BlackJackGame">
-    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackGame" />
+  <component name="RunManager" selected="JUnit.TestCondition.dealerWinCondition">
+    <configuration name="BlackJackGUILogic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.gui.BlackJackGUILogic" />
       <module name="BlackJack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.blackjackproject.*" />
+          <option name="PATTERN" value="com.blackjackproject.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -146,11 +142,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.BlackJackGame" />
         <item itemvalue="JUnit.TestCondition.dealerWinCondition" />
-        <item itemvalue="JUnit.TestCondition.dealerBustCondition" />
         <item itemvalue="JUnit.TestCondition.playerWinCondition" />
+        <item itemvalue="JUnit.TestCondition.dealerBustCondition" />
         <item itemvalue="JUnit.TestCondition.playerBustCondition" />
+        <item itemvalue="Application.BlackJackGUILogic" />
       </list>
     </recent_temporary>
   </component>
@@ -218,11 +214,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/test/TestCondition/TestCondition.java</url>
-          <line>39</line>
-          <properties class="TestCondition.TestCondition" method="playerBustCondition">
+          <line>63</line>
+          <properties class="TestCondition.TestCondition" method="playerWinCondition">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
