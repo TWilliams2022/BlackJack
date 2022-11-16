@@ -174,6 +174,7 @@ public class BlackJackGUILogic {
         if(testWinCondition()){
             return;
         }
+
         // Ace values take care of them
         int playerScore = player.getHandValue();
         // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION - check
@@ -192,7 +193,6 @@ public class BlackJackGUILogic {
             frame.getContentPane().remove(dealerPanel);
             frame.getContentPane().remove(playerPanel);
         }
-
         dealerPanel = new CardPanels(dealer.getDealerHand(),420 - (dealer.getDealerHandCount() * 40),50,70,104,10);
         frame.getContentPane().add(dealerPanel);
 
