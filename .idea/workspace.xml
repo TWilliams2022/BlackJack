@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" afterDir="false" />
-    </list>
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
