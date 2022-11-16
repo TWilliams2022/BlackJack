@@ -12,8 +12,8 @@ public class BlackJackGUI extends JFrame {
        setLayout(null);
        setResizable(false);
 
-       //TODO BACK GROUnD
-        Images backgroundImage = new Images("TOOD");
+       //TODO BACK GROUnD - check
+        Images backgroundImage = new Images("IMG/blackjack-classic-background.jpeg");
         backgroundImage.setBounds(0,0,this.getWidth(),this.getHeight());
     }
 }
