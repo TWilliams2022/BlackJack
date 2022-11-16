@@ -114,7 +114,7 @@ public class BlackJackGUILogic {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO FIND CONTINUE;
+                //TODO FIND CONTINUE; rework
                 acceptOutcome();
             }
         });
@@ -138,6 +138,7 @@ public class BlackJackGUILogic {
         updateCardsOnTable();
         testBustCondition();
         testDealerBustCondition();
+
     }
 
     public boolean testBustCondition() {
@@ -156,7 +157,7 @@ public class BlackJackGUILogic {
             return false;
         }
     }
-
+    /// TODO REWORK SO THE GUI END GAME AND ASK FOR A CONTINUE OR END GAME;
     private boolean testWinCondition(){
         boolean result = false;
         if (dealer.showHandValue() >= player.getHandValue()) {
