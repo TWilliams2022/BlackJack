@@ -127,7 +127,6 @@ public class BlackJackGUILogic {
 
         updateCardsOnTable();
 
-        testWinCondition();
 
 
     }
@@ -218,8 +217,10 @@ public class BlackJackGUILogic {
         frame.getContentPane().add(dealButton);
         dealButton.requestFocus();
         frame.repaint();
+    }
 
-
+    public void continueButton() {
+        deal();
     }
 
     public static void main(String[] args) {

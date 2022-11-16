@@ -14,24 +14,16 @@ public class BlackJackLogic {
         dealer.clearHand();
         player.clearPlayerHand();
 
-        // Deal player to cards at the beginning of the game
+        // Deal player and Dealer cards at the beginning of the game
+
         player.receiveCard(dealer.dealACard());
-        player.receiveCard(dealer.dealACard());
-
-        // Deal A face Down Card and One Face
-
-
         dealer.addACard(dealer.dealACard());
+        player.receiveCard(dealer.dealACard());
+
+
+
 
     }
-
-    public static void flipDealerCard(Dealer dealer){
-
-        dealer.getDealerHand().getCards().set(0,dealer.dealACard());
-
-    }
-
-
 
 
 }
