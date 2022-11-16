@@ -60,6 +60,7 @@ public class Dealer {
 
         while (dealerHand.findHandValue() < 17){
             addACard(dealACard());
+
         }
     }
 

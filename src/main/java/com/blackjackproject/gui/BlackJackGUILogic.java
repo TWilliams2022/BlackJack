@@ -1,6 +1,7 @@
 package com.blackjackproject.gui;
 
 import com.blackjackproject.BlackJackLogic;
+import com.blackjackproject.cards.Card;
 import com.blackjackproject.players.Dealer;
 import com.blackjackproject.players.Player;
 
@@ -28,6 +29,7 @@ public class BlackJackGUILogic {
     // object
     private Dealer dealer;
     private Player player;
+    private Card hiddenCard;
 
     //labels for board
     private JLabel labelPlayer;
@@ -119,7 +121,9 @@ public class BlackJackGUILogic {
         frame.getContentPane().add(continueButton);
         frame.repaint();
         //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN - check
+
         BlackJackLogic.clearBothHandsAndDeal(dealer,player);
+        hiddenCard = dealer.dealACard();
 
         updateCardsOnTable();
 
@@ -171,16 +175,15 @@ public class BlackJackGUILogic {
         // Ace values take care of them
         int playerScore = player.getHandValue();
         // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION - check
-        BlackJackLogic.flipDealerCard(dealer);
+        dealer.addACard(hiddenCard);
         int dealerScore = dealer.showHandValue();
         dealer.dealersTurn();
-
         updateCardsOnTable();
+        testDealerBustCondition();
 
         testWinCondition();
 
     }
-
 
     private void updateCardsOnTable(){
         if(dealerPanel != null){

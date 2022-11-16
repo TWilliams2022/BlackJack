@@ -20,6 +20,7 @@ public class BlackJackLogic {
 
         // Deal A face Down Card and One Face
 
+
         dealer.addACard(dealer.dealACard());
 
     }
