@@ -25,9 +25,11 @@ public class Dealer {
         dealerHand.addCard(c);
     }
 
-    public int showHandValue(){             // calculate dealer hand value
-        return dealerHand.findHandValue();
-    }  //TODO rework
+    public int showHandValue(){
+        int handValue = dealerHand.findHandValue();// calculate dealer hand value
+
+        return handValue;
+    }
 
     public int remainingCards(){        //
         return cards.checkDeckSize();
@@ -59,6 +61,17 @@ public class Dealer {
         while (dealerHand.findHandValue() < 17){
             addACard(dealACard());
         }
+    }
+
+    private int numofAces(){
+        int count = 0;
+        for(Card card : dealerHand.getCards()){
+            if(card.getValue() == 11){
+                count++;
+            }
+
+        }
+        return count;
     }
 
 

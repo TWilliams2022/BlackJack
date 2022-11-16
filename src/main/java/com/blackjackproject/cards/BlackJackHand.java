@@ -13,8 +13,24 @@ public class BlackJackHand extends Hand {
         handValue = cards.stream()
             .mapToInt(x -> x.getValue())
             .sum();
-        this.setHandValue(handValue);
+
+        if(handValue > 21 && numOfAces() > 0){
+            handValue = handValue - 10;
+        }
         return handValue;
+    }
+
+
+    private int numOfAces(){
+
+        int count = 0;
+
+        for(Card card : cards){
+            if(card.getValue() == 11){
+               count++;
+            }
+        }
+        return count;
     }
 
 

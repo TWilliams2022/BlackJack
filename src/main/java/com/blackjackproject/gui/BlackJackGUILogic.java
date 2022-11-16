@@ -148,15 +148,14 @@ public class BlackJackGUILogic {
         }
         // Ace values take care of them
         int playerScore = player.getHandValue();
-        // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION
+        // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION - check
         BlackJackLogic.flipDealerCard(dealer);
         int dealerScore = dealer.showHandValue();
         dealer.dealersTurn();
 
-
         updateCardsOnTable();
 
-
+        testWinCondition();
 
     }
 
