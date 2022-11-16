@@ -14,14 +14,11 @@ public class BlackJackHand extends Hand {
             .mapToInt(x -> x.getValue())
             .sum();
 
-        if(handValue > 21 && numOfAces() > 0){
-            handValue = handValue - 10;
-        }
         return handValue;
     }
 
 
-    private int numOfAces(){
+    public int numOfAces(){
 
         int count = 0;
 

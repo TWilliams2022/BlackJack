@@ -12,7 +12,7 @@ import java.awt.*;
 
 public class CardPanels extends JPanel {
 
-    public CardPanels(Hand hand, int left, int top, int width, int height, int gap){
+    public CardPanels(BlackJackHand hand, int left, int top, int width, int height, int gap){
 
         int numCards = hand.getCards().size();
 
@@ -24,13 +24,13 @@ public class CardPanels extends JPanel {
 
         // TODO 21 GAME LOGIC
         int total = hand.getHandValue();
-//
-//        if(total > 21 && hand.getCards() ){
-//            total -= 10;
-//        }
+
+       if(total > 21 && hand.numOfAces() > 0){
+            total -= 10;
+       }
 
         // player Labels
-        JLabel playerScore = new JLabel((total == 21 ? "Black Jack!" : total) + "");
+        JLabel playerScore = new JLabel((total == 21 ? "BJ" : total) + "");
         playerScore.setForeground(Color.WHITE);
         playerScore.setFont(new Font("Lucida Grande",Font.BOLD, 20));
         playerScore.setVerticalAlignment(SwingConstants.CENTER);
