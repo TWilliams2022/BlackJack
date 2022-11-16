@@ -102,7 +102,7 @@ public class BlackJackGUILogic {
             }
         });
 
-        //TODO finish
+
         frame.getContentPane().add(standButton);
 
         continueButton = new JButton("Continue");
@@ -136,7 +136,8 @@ public class BlackJackGUILogic {
 
     private boolean testWinCondition(){
 
-        //TODO TEST BASIC WIN CODITION
+
+
         return false;
 
     }
@@ -180,6 +181,7 @@ public class BlackJackGUILogic {
         player =new Player();
         dealer = new Dealer();
         dealer.shuffle();
+
 
         dealButton = new JButton("Deal");
 

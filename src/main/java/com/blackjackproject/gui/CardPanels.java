@@ -22,12 +22,10 @@ public class CardPanels extends JPanel {
 
 
 
-        // TODO 21 GAME LOGIC
+
         int total = hand.getHandValue();
 
-       if(total > 21 && hand.numOfAces() > 0){
-            total -= 10;
-       }
+
 
         // player Labels
         JLabel playerScore = new JLabel((total == 21 ? "BJ" : total) + "");
