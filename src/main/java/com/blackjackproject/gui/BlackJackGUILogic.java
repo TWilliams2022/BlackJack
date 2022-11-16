@@ -115,6 +115,7 @@ public class BlackJackGUILogic {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //TODO FIND CONTINUE;
+                acceptOutcome();
             }
         });
 
@@ -219,6 +220,21 @@ public class BlackJackGUILogic {
         dealButton.requestFocus();
         frame.repaint();
 
+
+    }
+
+
+    public void acceptOutcome(){
+
+        frame.getContentPane().remove(hitButton);
+        frame.getContentPane().remove(standButton);
+        frame.getContentPane().remove(labelDealer);
+        frame.getContentPane().remove(playerPanel);
+        frame.getContentPane().remove(continueButton);
+
+        dealButton.setVisible(true);
+        dealButton.requestFocus();
+        frame.repaint();
 
     }
 
