@@ -27,7 +27,7 @@ public class Dealer {
 
     public int showHandValue(){             // calculate dealer hand value
         return dealerHand.findHandValue();
-    }
+    }  //TODO rework
 
     public int remainingCards(){        //
         return cards.checkDeckSize();

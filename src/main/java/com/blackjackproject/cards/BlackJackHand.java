@@ -13,6 +13,7 @@ public class BlackJackHand extends Hand {
         handValue = cards.stream()
             .mapToInt(x -> x.getValue())
             .sum();
+        this.setHandValue(handValue);
         return handValue;
     }
 

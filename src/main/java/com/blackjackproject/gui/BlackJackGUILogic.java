@@ -118,10 +118,11 @@ public class BlackJackGUILogic {
 
         frame.getContentPane().add(continueButton);
         frame.repaint();
-        //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN
-
+        //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN - check
+        BlackJackLogic.clearBothHandsAndDeal(dealer,player);
 
         updateCardsOnTable();
+
         testWinCondition();
 
 
@@ -145,11 +146,12 @@ public class BlackJackGUILogic {
         if(testWinCondition()){
             return;
         }
+        // Ace values take care of them
         int playerScore = player.getHandValue();
-        int dealerScore = dealer.showHandValue();
-
         // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION
-
+        BlackJackLogic.flipDealerCard(dealer);
+        int dealerScore = dealer.showHandValue();
+        dealer.dealersTurn();
 
 
         updateCardsOnTable();
