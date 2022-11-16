@@ -23,7 +23,7 @@ public class CardPanels extends JPanel {
 
 
 
-        int total = hand.getHandValue();
+        int total = hand.findHandValue();
 
 
 

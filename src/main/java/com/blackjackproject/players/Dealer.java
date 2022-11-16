@@ -64,16 +64,6 @@ public class Dealer {
         }
     }
 
-    private int numofAces(){
-        int count = 0;
-        for(Card card : dealerHand.getCards()){
-            if(card.getValue() == 11){
-                count++;
-            }
-
-        }
-        return count;
-    }
 
 
 

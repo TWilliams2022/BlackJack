@@ -125,9 +125,7 @@ public class BlackJackGUILogic {
 
         BlackJackLogic.clearBothHandsAndDeal(dealer,player);
         hiddenCard = dealer.dealACard();
-
         updateCardsOnTable();
-
 
 
     }
@@ -135,8 +133,8 @@ public class BlackJackGUILogic {
     private void hit(){
         player.receiveCard(dealer.dealACard());
         updateCardsOnTable();
-        testBustCondition();
-        testDealerBustCondition();
+   //     testBustCondition();
+ //       testDealerBustCondition();
 
     }
 
@@ -168,9 +166,11 @@ public class BlackJackGUILogic {
         return result;
     }
 
+
     private void stand(){
 
         if(testWinCondition()){
+
             return;
         }
 
@@ -224,6 +224,7 @@ public class BlackJackGUILogic {
     public void continueButton() {
         deal();
     }
+
 
 
     public void acceptOutcome(){

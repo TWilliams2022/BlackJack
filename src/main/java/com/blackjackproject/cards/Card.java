@@ -50,6 +50,6 @@ public class Card {
             return "cardImages/backCover.png" ;
         }
 
-        return String.format("CardImages/%s/%s.png", this.suit,this.rank);
+        return String.format("CardImages/%s/%s.png", this.suit,this.rank.getName());
     }
 }
