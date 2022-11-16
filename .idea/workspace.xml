@@ -6,20 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/Suit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/BlackJackGUILogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/cards/BlackJackHand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/gui/CardPanels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/blackjackproject/cards/BjLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/BlackJackApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/cards/Hand.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackLogic.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Dealer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/players/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
