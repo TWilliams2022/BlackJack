@@ -40,13 +40,13 @@ public class BlackJackGUILogic {
     private JLabel labelDealer;
     private JLabel infoLabel;
 
-
+    // Constructor
     public BlackJackGUILogic() {
         intiGui();
         frame.setVisible(true);
     }
 
-
+    // Initialize GUI, New Game Button, End Game Button active
     public void intiGui(){
         newGame = new JButton("New Game");
 
@@ -75,7 +75,28 @@ public class BlackJackGUILogic {
 
     }
 
+    // Starts New game, creates dealer/player objects, Deal button active
+    public void startGame(){
+        newGame.setEnabled(false);
+        player =new Player();
+        dealer = new Dealer();
+        dealer.shuffle();
 
+        dealButton = new JButton("Deal");
+
+        dealButton.setBounds(679,610,200,50);
+        dealButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deal();
+            }
+        });
+        frame.getContentPane().add(dealButton);
+        dealButton.requestFocus();
+        frame.repaint();
+    }
+
+    // set game initial conditions, hit and stay buttons active
     public void  deal(){
 
         dealButton.setEnabled(false);
@@ -147,6 +168,7 @@ public class BlackJackGUILogic {
 
     }
 
+    // add card to players hand and check bust logic
     private void hit(){
         player.receiveCard(dealer.dealACard());
 
@@ -155,45 +177,7 @@ public class BlackJackGUILogic {
 
     }
 
-    public boolean testBustCondition() {
-        boolean endGame = false;
-        int playerScore = player.getHandValue();
-
-        if(playerScore == 21){
-
-            dealer.addACard(hiddenCard);
-            updateCardsOnTable();
-            infoLabel.setText("PLAYER HIT BLACKJACK !!!");
-        }
-
-        if (playerScore > 21 && player.getPlayerHand().numOfAces() > 0) {
-
-            playerScore = playerScore - 10;
-
-            if(playerScore == 21){
-
-                dealer.addACard(hiddenCard);
-                updateCardsOnTable();
-                infoLabel.setText("PLAYER HIT BLACKJACK !!!");
-            }
-
-            endGame = true;
-            winLoseHappen();
-        }
-        else if(playerScore > 21) {
-            infoLabel.setText("YOU HIT BUST DEALER WINS!!!!");
-            dealer.addACard(hiddenCard);
-            updateCardsOnTable();
-            endGame = true;
-            winLoseHappen();
-        }
-        return endGame;
-    }
-
-
-
-
-
+    // ends the players turn starts the dealer turn, check dealer bust, determines winner
     private void stand(){
 
         if(testBustCondition()){
@@ -243,13 +227,41 @@ public class BlackJackGUILogic {
 
     }
 
+    // called to test for bust condition in player hand
+    public boolean testBustCondition() {
+        boolean endGame = false;
+        int playerScore = player.getHandValue();
+
+        if (playerScore > 21 && player.getPlayerHand().numOfAces() > 0) {
+
+            playerScore = playerScore - 10;
+
+            if(playerScore == 21){
+
+                dealer.addACard(hiddenCard);
+                updateCardsOnTable();
+                infoLabel.setText("PLAYER HIT BLACKJACK !!!");
+            }
+
+            endGame = true;
+            winLoseHappen();
+        }
+        else if(playerScore > 21) {
+            infoLabel.setText("YOU HIT BUST DEALER WINS!!!!");
+            dealer.addACard(hiddenCard);
+            updateCardsOnTable();
+            endGame = true;
+            winLoseHappen();
+        }
+        return endGame;
+    }
+
+    // updates the cards on the table
     private void updateCardsOnTable(){
         if(dealerPanel != null){
             frame.getContentPane().remove(dealerPanel);
             frame.getContentPane().remove(playerPanel);
         }
-
-
 
         dealerPanel = new CardPanels(dealer.getDealerHand(),420 - (dealer.getDealerHandCount() * 40),50,70,104,10);
         frame.getContentPane().add(dealerPanel);
@@ -259,27 +271,7 @@ public class BlackJackGUILogic {
         frame.repaint();
     }
 
-
-    public void startGame(){
-        newGame.setEnabled(false);
-        player =new Player();
-        dealer = new Dealer();
-        dealer.shuffle();
-
-        dealButton = new JButton("Deal");
-
-        dealButton.setBounds(679,610,200,50);
-        dealButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                deal();
-            }
-        });
-        frame.getContentPane().add(dealButton);
-        dealButton.requestFocus();
-        frame.repaint();
-    }
-
+   // called at the beginning of each hand to clear both hands and deal initial cards
     public static void clearBothHandsAndDeal(Dealer dealer, Player player){
         dealer.clearHand();
         player.clearPlayerHand();
@@ -290,7 +282,7 @@ public class BlackJackGUILogic {
 
     }
 
-
+    // called  at end of game,  continue button enabled
     public void winLoseHappen(){
         hitButton.setEnabled(false);
         standButton.setEnabled(false);
