@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Changes Gui game logic&#10;-remove BlackJackLogic class">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,18 +86,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestCondition.dealerBustCondition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BlackJackGame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.blackjackproject.BlackJackGame" />
       <module name="BlackJack" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="TestCondition.*" />
+          <option name="PATTERN" value="com.blackjackproject.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="TestCondition" />
-      <option name="MAIN_CLASS_NAME" value="TestCondition.TestCondition" />
-      <option name="METHOD_NAME" value="dealerBustCondition" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -136,10 +134,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.BlackJackApplication" />
+        <item itemvalue="Application.BlackJackGame" />
         <item itemvalue="Application.BlackJackGUILogic" />
         <item itemvalue="JUnit.TestCondition.dealerWinCondition" />
         <item itemvalue="JUnit.TestCondition.playerWinCondition" />
-        <item itemvalue="JUnit.TestCondition.dealerBustCondition" />
       </list>
     </recent_temporary>
   </component>
