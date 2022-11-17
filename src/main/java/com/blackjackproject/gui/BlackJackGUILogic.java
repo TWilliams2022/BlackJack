@@ -321,11 +321,7 @@ public class BlackJackGUILogic {
 
     }
 
-    public static void main(String[] args) {
-        BlackJackGUILogic h = new BlackJackGUILogic();
-        h.intiGui();
-        frame.setVisible(true);
-    }
+
 
 
 
