@@ -40,6 +40,13 @@ public class BlackJackGUILogic {
     private JLabel labelDealer;
     private JLabel infoLabel;
 
+
+    public BlackJackGUILogic() {
+        intiGui();
+        frame.setVisible(true);
+    }
+
+
     public void intiGui(){
         newGame = new JButton("New Game");
 
@@ -330,13 +337,6 @@ public class BlackJackGUILogic {
         }
 
     }
-
-    public static void main(String[] args) {
-        BlackJackGUILogic h = new BlackJackGUILogic();
-        h.intiGui();
-        frame.setVisible(true);
-    }
-
 
 
 }
