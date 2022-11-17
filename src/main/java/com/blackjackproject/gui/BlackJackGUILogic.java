@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class BlackJackGUILogic {
 
@@ -114,7 +116,7 @@ public class BlackJackGUILogic {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO FIND CONTINUE; rework
+                //TODO FIND CONTINUE; rework - check
                 acceptOutcome();
             }
         });
@@ -133,8 +135,8 @@ public class BlackJackGUILogic {
     private void hit(){
         player.receiveCard(dealer.dealACard());
         updateCardsOnTable();
-   //     testBustCondition();
- //       testDealerBustCondition();
+        testBustCondition();
+        testDealerBustCondition();
 
     }
 
@@ -192,6 +194,7 @@ public class BlackJackGUILogic {
             frame.getContentPane().remove(dealerPanel);
             frame.getContentPane().remove(playerPanel);
         }
+
         dealerPanel = new CardPanels(dealer.getDealerHand(),420 - (dealer.getDealerHandCount() * 40),50,70,104,10);
         frame.getContentPane().add(dealerPanel);
 
@@ -221,10 +224,23 @@ public class BlackJackGUILogic {
         frame.repaint();
     }
 
-    public void continueButton() {
-        deal();
-    }
 
+    public void winLoseHappen(){
+        hitButton.setEnabled(false);
+        standButton.setEnabled(false);
+
+        TimerTask countDown = new TimerTask(){
+
+            @Override
+            public void run() {
+                continueButton.setEnabled(true);
+                continueButton.setVisible(true);
+                continueButton.requestFocus();
+            }
+        };
+        countDown.scheduledExecutionTime();
+        new Timer().schedule(countDown, 500);
+    }
 
 
     public void acceptOutcome(){
@@ -238,6 +254,19 @@ public class BlackJackGUILogic {
         dealButton.setVisible(true);
         dealButton.requestFocus();
         frame.repaint();
+
+        int choice = JOptionPane.showOptionDialog(null, "Do yo want to continue playing?", "Continue? ", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,null,null,null);
+
+
+        if(choice == JOptionPane.YES_OPTION){
+
+        }
+        else {
+            frame.getContentPane().removeAll();
+            frame.repaint();
+            intiGui();
+            return;
+        }
 
     }
 
