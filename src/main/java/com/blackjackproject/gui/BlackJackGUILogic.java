@@ -14,7 +14,7 @@ import java.util.TimerTask;
 
 public class BlackJackGUILogic {
 
-    private static JFrame frame = new BlackJackGUI();
+    private static final JFrame frame = new BlackJackGUI();
 
     // card panels
     private CardPanels dealerPanel;
@@ -72,7 +72,7 @@ public class BlackJackGUILogic {
     public void  deal(){
 
         dealButton.setEnabled(false);
-
+        endGame.setEnabled(true);
         labelDealer = new JLabel("Dealer");
         labelDealer.setForeground(Color.WHITE);
         labelDealer.setFont(new Font("Arial Black",Font.BOLD, 20));
@@ -116,7 +116,6 @@ public class BlackJackGUILogic {
             }
         });
 
-        //TODO finish
         frame.getContentPane().add(standButton);
 
         continueButton = new JButton("Continue");
@@ -126,7 +125,6 @@ public class BlackJackGUILogic {
         continueButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //TODO FIND CONTINUE; rework - check
                 acceptOutcome();
             }
         });
@@ -134,7 +132,6 @@ public class BlackJackGUILogic {
 
         frame.getContentPane().add(continueButton);
         frame.repaint();
-        //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN - check
 
         clearBothHandsAndDeal(dealer,player);
         hiddenCard = dealer.dealACard();
@@ -197,7 +194,6 @@ public class BlackJackGUILogic {
             playerScore = playerScore - 10;
         }
 
-        // TODO DEALER HITS AND WHILE UNDER 17 AND THEN REFRESH THEN CHECK WIN CONDITION - check
         dealer.addACard(hiddenCard);
 
         dealer.dealersTurn();

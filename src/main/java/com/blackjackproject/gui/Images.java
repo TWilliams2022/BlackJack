@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Images extends JPanel {
 
-    private Image image;
+    private final Image image;
 
 
     public Images(String img){
