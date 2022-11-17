@@ -23,7 +23,7 @@ public class BlackJackHand extends Hand {
         int count = 0;
 
         for(Card card : cards){
-            if(card.getValue() == 11){
+            if(card.getRank().getName().equals("Ace")){
                count++;
             }
         }

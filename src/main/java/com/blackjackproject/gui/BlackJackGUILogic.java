@@ -33,8 +33,7 @@ public class BlackJackGUILogic {
     private Dealer dealer;
     private Player player;
     private Card hiddenCard;
-    private int dealScore;
-    private int playerScore;
+
 
     //labels for board
     private JLabel labelPlayer;
@@ -146,19 +145,21 @@ public class BlackJackGUILogic {
 
     private void hit(){
         player.receiveCard(dealer.dealACard());
-        updateCardsOnTable();
+
         testBustCondition();
+        updateCardsOnTable();
 
     }
 
     public boolean testBustCondition() {
         boolean endGame = false;
+        int playerScore = player.getHandValue();
+
         if (playerScore > 21 && player.getPlayerHand().numOfAces() > 0) {
 
             playerScore = playerScore - 10;
 
             if(playerScore == 21){
-                //TODO LABEL
 
                 dealer.addACard(hiddenCard);
                 updateCardsOnTable();
@@ -202,6 +203,11 @@ public class BlackJackGUILogic {
         dealer.dealersTurn();
 
         int dealerScore = dealer.showHandValue();
+
+        if(dealerScore > 21 && dealer.getDealerHand().numOfAces() > 0){
+            dealerScore = dealerScore - 10;
+        }
+
         updateCardsOnTable();
 
 
