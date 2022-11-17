@@ -28,6 +28,7 @@ public class BlackJackGUILogic {
     private JButton dealButton;
     private JButton continueButton;
 
+
     // object
     private Dealer dealer;
     private Player player;
@@ -36,7 +37,7 @@ public class BlackJackGUILogic {
     //labels for board
     private JLabel labelPlayer;
     private JLabel labelDealer;
-
+    private JLabel infoLabel;
 
     public void intiGui(){
         newGame = new JButton("New Game");
@@ -83,6 +84,14 @@ public class BlackJackGUILogic {
         labelPlayer.setBounds(415,266,82,28);
         frame.getContentPane().add(labelPlayer);
 
+        infoLabel = new JLabel("Please Hit or Stand");
+        infoLabel.setBackground(Color.ORANGE);
+        infoLabel.setOpaque(false);
+        infoLabel.setForeground(Color.ORANGE);
+        infoLabel.setFont(new Font("Arial",Font.BOLD,16));
+        infoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        infoLabel.setBounds(290,482,320,28);
+        frame.getContentPane().add(infoLabel);
 
 
         hitButton = new JButton("Hit!");
@@ -121,6 +130,7 @@ public class BlackJackGUILogic {
             }
         });
 
+
         frame.getContentPane().add(continueButton);
         frame.repaint();
         //TODO METHOD TO GIVE PLAYER TWO CARDS AND DEAL ONE AND A HIDDEN - check
@@ -141,37 +151,59 @@ public class BlackJackGUILogic {
     }
 
     public boolean testBustCondition() {
-        if (player.getHandValue() > 21 || dealer.showHandValue() > 21) {
-            return true;
+        boolean endGame = false;
+        int playerScore = player.getHandValue();
+        if (playerScore > 21 && player.getPlayerHand().numOfAces() > 0) {
+            player.getPlayerHand().setHandValue(playerScore - 10);
+
+
+            if(playerScore == 21){
+                //TODO LABEL
+                infoLabel.setText("YOU HIT BLACKJACK YOU WIN");
+                dealer.addACard(hiddenCard);
+                updateCardsOnTable();
+            }
+
+            endGame = true;
+            winLoseHappen();
         }
-        else {
-            return false;
+        else if(playerScore > 21) {
+            infoLabel.setText("YOU HIT BUST DEALER WINS!!!!");
+            dealer.addACard(hiddenCard);
+            updateCardsOnTable();
+            endGame = true;
+            winLoseHappen();
         }
+        return endGame;
     }
     public boolean testDealerBustCondition() {
-        if (dealer.showHandValue() > 21) {
-            return true;
+        boolean dealerWin = false;
+        int dealerScore = dealer.showHandValue();
+        if (dealerScore > 21 && dealer.getDealerHand().numOfAces() > 0) {
+            dealerScore -= 10;
+
+            if (dealerScore == 21) {
+                infoLabel.setText("DEALER HIT BLACKJACK YOU LOSE !!!!");
+            }
+            dealerWin = true;
+            winLoseHappen();
+
+        } else if (dealerScore > 21) {
+            //TODO LABEL;
+            infoLabel.setText("DEAL BUST PLAYER WINS!!!");
+            updateCardsOnTable();
+            dealerWin = true;
+            winLoseHappen();
+
         }
-        else {
-            return false;
-        }
+        return dealerWin;
     }
-    /// TODO REWORK SO THE GUI END GAME AND ASK FOR A CONTINUE OR END GAME;
-    private boolean testWinCondition(){
-        boolean result = false;
-        if (dealer.showHandValue() >= player.getHandValue()) {
-            result = true;
-        }
-        else {
-            result = false;
-        }
-        return result;
-    }
+
 
 
     private void stand(){
 
-        if(testWinCondition()){
+        if(testBustCondition()){
 
             return;
         }
@@ -183,9 +215,16 @@ public class BlackJackGUILogic {
         int dealerScore = dealer.showHandValue();
         dealer.dealersTurn();
         updateCardsOnTable();
-        testDealerBustCondition();
+        testBustCondition();
 
-        testWinCondition();
+        if(playerScore > dealerScore){
+            infoLabel.setText("PLAYER WINS!!!!");
+            winLoseHappen();
+        }
+        else if(dealerScore > playerScore){
+            infoLabel.setText("DEALER WINS !!! ");
+            winLoseHappen();
+        }
 
     }
 
@@ -248,8 +287,11 @@ public class BlackJackGUILogic {
         frame.getContentPane().remove(hitButton);
         frame.getContentPane().remove(standButton);
         frame.getContentPane().remove(labelDealer);
+        frame.getContentPane().remove(dealerPanel);
         frame.getContentPane().remove(playerPanel);
         frame.getContentPane().remove(continueButton);
+        frame.getContentPane().remove(infoLabel);
+        frame.getContentPane().remove(labelPlayer);
 
         dealButton.setVisible(true);
         dealButton.requestFocus();
@@ -259,6 +301,8 @@ public class BlackJackGUILogic {
 
 
         if(choice == JOptionPane.YES_OPTION){
+            intiGui();
+            dealButton.setEnabled(true);
 
         }
         else {
