@@ -152,6 +152,15 @@ public class BlackJackGUILogic {
         boolean endGame = false;
         int playerScore = player.getHandValue();
 
+        if(playerScore == 21){
+
+            dealer.addACard(hiddenCard);
+            updateCardsOnTable();
+            infoLabel.setText("PLAYER HIT BLACKJACK !!!");
+            endGame =true;
+            acceptOutcome();
+        }
+
         if (playerScore > 21 && player.getPlayerHand().numOfAces() > 0) {
 
             playerScore = playerScore - 10;
@@ -329,6 +338,12 @@ public class BlackJackGUILogic {
             return;
         }
 
+    }
+
+    public void run(){
+
+        intiGui();
+        frame.setVisible(true);
     }
 
 

@@ -1,7 +1,6 @@
 package com.blackjackproject;
 
 
-import com.blackjackproject.gui.BlackJackGUI;
 import com.blackjackproject.gui.BlackJackGUILogic;
 
 public class BlackJackApplication implements Runnable {
@@ -17,7 +16,8 @@ public class BlackJackApplication implements Runnable {
 
     @Override
     public void run() {
-
+        BlackJackGUILogic game = new BlackJackGUILogic();
+        game.run();
 
     }
 }
