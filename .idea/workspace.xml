@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="commit player Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ReadMe.md" beforeDir="false" afterPath="$PROJECT_DIR$/ReadMe.md" afterDir="false" />
@@ -15,6 +16,10 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$6.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/blackjackproject/gui/BlackJackGUILogic.class" afterDir="false" />
+=======
+    <list default="true" id="e04aaddf-94e7-4ba1-a597-90b0547e268d" name="Changes" comment="Changes Gui game logic&#10;-remove BlackJackLogic class">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/blackjackproject/BlackJackApplication.java" afterDir="false" />
+>>>>>>> d520892bc221489778591ba7908de5bfe01df8cf
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

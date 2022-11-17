@@ -10,12 +10,12 @@ public class BlackJackApplication implements Runnable {
 
     public static void main(String[] args) {
 
-        BlackJackGUILogic h = new BlackJackGUILogic();
+        new Thread(new BlackJackApplication()).start();
 
     }
 
     @Override
     public void run() {
-
+        BlackJackGUILogic h = new BlackJackGUILogic();
     }
 }
