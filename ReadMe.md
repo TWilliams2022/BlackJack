@@ -54,8 +54,7 @@ Simple game of Black Jack!
 
 
 
-
-
-
+## Presentation
+https://www.canva.com/design/DAFSCL9NslA/PfhMIXCbcD8Bw5m3bsXwVQ/view?utm_content=DAFSCL9NslA&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
 
