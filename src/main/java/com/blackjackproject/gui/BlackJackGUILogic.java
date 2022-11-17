@@ -1,6 +1,6 @@
 package com.blackjackproject.gui;
 
-import com.blackjackproject.BlackJackLogic;
+//import com.blackjackproject.BlackJackLogic;
 import com.blackjackproject.cards.Card;
 import com.blackjackproject.players.Dealer;
 import com.blackjackproject.players.Player;
@@ -133,7 +133,7 @@ public class BlackJackGUILogic {
         frame.getContentPane().add(continueButton);
         frame.repaint();
 
-        BlackJackLogic.clearBothHandsAndDeal(dealer,player);
+        clearBothHandsAndDeal(dealer,player);
         hiddenCard = dealer.dealACard();
         updateCardsOnTable();
 
@@ -264,6 +264,16 @@ public class BlackJackGUILogic {
         frame.getContentPane().add(dealButton);
         dealButton.requestFocus();
         frame.repaint();
+    }
+
+    public static void clearBothHandsAndDeal(Dealer dealer, Player player){
+        dealer.clearHand();
+        player.clearPlayerHand();
+        // Deal player and Dealer cards at the beginning of the game
+        player.receiveCard(dealer.dealACard());
+        dealer.addACard(dealer.dealACard());
+        player.receiveCard(dealer.dealACard());
+
     }
 
 

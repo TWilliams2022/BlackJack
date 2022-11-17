@@ -1,9 +1,11 @@
 package com.blackjackproject.players;
 
+import com.blackjackproject.BlackJackGame;
 import com.blackjackproject.cards.BlackJackHand;
 import com.blackjackproject.cards.Card;
 import com.blackjackproject.cards.Rank;
 import com.blackjackproject.cards.Suit;
+import com.blackjackproject.gui.BlackJackGUILogic;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,5 +44,16 @@ public class PlayerTest {
         testPlayer.receiveCard(eightDiamonds);
         testPlayer.clearPlayerHand();
         assertEquals(0,testPlayer.getPlayerHand().findHandValue());
+    }
+
+    @Test
+    public void test_bust_condition() {
+        testPlayer.receiveCard(sevenDiamonds);
+        testPlayer.receiveCard(sevenDiamonds);
+        testPlayer.receiveCard(sevenDiamonds);
+        testPlayer.receiveCard(sevenDiamonds);
+        Dealer dealer = new Dealer();
+        BlackJackGUILogic bj = new BlackJackGUILogic();
+        assertTrue(bj.testBustCondition());
     }
 }
