@@ -226,7 +226,7 @@ public class BlackJackGUILogic {
             infoLabel.setText("PLAYER WINS!!!");
         }
         else if(dealerScore == 21){
-            infoLabel.setText("DEAL HIT BLACKJACK!!!");
+            infoLabel.setText("DEALER HIT BLACKJACK!!!");
         }
 
         else if(dealerScore > 21){
