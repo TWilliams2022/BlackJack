@@ -72,7 +72,7 @@ public class BlackJackGUILogic {
     public void  deal(){
 
         dealButton.setEnabled(false);
-
+        endGame.setEnabled(true);
         labelDealer = new JLabel("Dealer");
         labelDealer.setForeground(Color.WHITE);
         labelDealer.setFont(new Font("Arial Black",Font.BOLD, 20));
