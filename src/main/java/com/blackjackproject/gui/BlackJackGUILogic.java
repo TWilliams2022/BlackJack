@@ -40,6 +40,13 @@ public class BlackJackGUILogic {
     private JLabel labelDealer;
     private JLabel infoLabel;
 
+
+    public BlackJackGUILogic() {
+        intiGui();
+        frame.setVisible(true);
+    }
+
+
     public void intiGui(){
         newGame = new JButton("New Game");
 
@@ -151,15 +158,6 @@ public class BlackJackGUILogic {
     public boolean testBustCondition() {
         boolean endGame = false;
         int playerScore = player.getHandValue();
-
-        if(playerScore == 21){
-
-            dealer.addACard(hiddenCard);
-            updateCardsOnTable();
-            infoLabel.setText("PLAYER HIT BLACKJACK !!!");
-            endGame =true;
-            acceptOutcome();
-        }
 
         if (playerScore > 21 && player.getPlayerHand().numOfAces() > 0) {
 
@@ -339,15 +337,6 @@ public class BlackJackGUILogic {
         }
 
     }
-
-    public void run(){
-
-        intiGui();
-        frame.setVisible(true);
-    }
-
-
-
 
 
 }
