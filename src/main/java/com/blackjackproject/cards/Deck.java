@@ -5,7 +5,7 @@ import java.util.*;
 public class Deck {
 
     // Deck Fields
-    private List<Card> cards = new ArrayList<>();
+    private final List<Card> cards = new ArrayList<>();
 
 
     // Deck Constructor

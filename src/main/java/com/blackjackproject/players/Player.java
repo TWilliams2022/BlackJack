@@ -7,7 +7,7 @@ public class Player {
 
 
     // Player Fields
-    private BlackJackHand playerHand;
+    private final BlackJackHand playerHand;
 
 
     // Player Constructor

@@ -12,7 +12,7 @@ public class BlackJackGame {
     private boolean play = true;  //set false to end the game
     private boolean hit = true;  //set false to end player turn
 
-    private Scanner playerAction = new Scanner(System.in);
+    private final Scanner playerAction = new Scanner(System.in);
 
     // create dealer and player objects
     Dealer dealer = new Dealer();
