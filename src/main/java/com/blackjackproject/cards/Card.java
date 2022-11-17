@@ -46,7 +46,7 @@ public class Card {
 
     public String getImgFile() {
 
-        if(getValue() == 0){
+        if(this.getValue() == 0){
             return "cardImages/backCover.png" ;
         }
 

@@ -25,6 +25,9 @@ public class CardPanels extends JPanel {
 
         int total = hand.findHandValue();
 
+        if(total > 21 && hand.numOfAces() > 0){
+            total -= 10;
+        }
 
 
         // player Labels
